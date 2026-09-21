@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IELTS Speaking Part 1 topic cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500..800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+  --bg:#EFEBE3; --surface:#FFFFFF; --ink:#16214A; --muted:#6C675C; --line:#DDD6C8; --soft:#F5F2EC;
+  --btn:#16214A; --btn-ink:#FFFFFF; --alert:#CF3A3F; --focus:#2F5BE0;
+  --c-tech:#D9645B; --c-hobby:#8B70CF; --c-place:#7F975C; --c-life:#4AA19A;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#10152B; --surface:#1A2141; --ink:#F1ECE2; --muted:#A7A89F; --line:#2C3560; --soft:#141A36;
+    --btn:#F1ECE2; --btn-ink:#10152B; --alert:#FF7378; --focus:#9DB4FF;
+    --c-tech:#F0857C; --c-hobby:#A891EA; --c-place:#9DB77B; --c-life:#6CBDB6;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#10152B; --surface:#1A2141; --ink:#F1ECE2; --muted:#A7A89F; --line:#2C3560; --soft:#141A36;
+  --btn:#F1ECE2; --btn-ink:#10152B; --alert:#FF7378; --focus:#9DB4FF;
+  --c-tech:#F0857C; --c-hobby:#A891EA; --c-place:#9DB77B; --c-life:#6CBDB6;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+
+.wrap{max-width:1120px;margin:0 auto;padding:36px 20px 72px}
+h1{font-family:var(--serif);font-weight:750;font-size:clamp(34px,6vw,54px);line-height:1.04;letter-spacing:-.02em;margin:0 0 14px}
+h2{font-family:var(--serif);font-weight:700;font-size:26px;line-height:1.2;margin:0}
+.lede{max-width:60ch;margin:0 0 4px;color:var(--muted)}
+
+/* toolbar */
+.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;margin:30px 0 8px}
+.cats{display:flex;flex-wrap:wrap;gap:8px}
+.cat{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;cursor:pointer;font-weight:500;font-size:15px}
+.cat i{width:10px;height:10px;border-radius:50%;background:var(--c,var(--ink))}
+.cat[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.ctrl{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.timelab{font-size:14px;color:var(--muted)}
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;background:var(--surface);padding:3px}
+.seg button{border:0;background:transparent;border-radius:999px;padding:4px 13px;cursor:pointer;font-weight:500;font-size:15px}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.btn{border:1.5px solid transparent;border-radius:999px;padding:10px 22px;font-weight:600;cursor:pointer}
+.btn.primary{background:var(--btn);color:var(--btn-ink)}
+.btn.line{background:transparent;border-color:var(--ink)}
+.btn.ghost{background:transparent;border-color:var(--line)}
+.btn.rec{background:var(--alert);color:#fff}
+.btn:hover{filter:brightness(1.08)}
+.note{min-height:1.6em;margin:8px 0 14px;color:var(--muted);font-size:15px}
+
+/* topic cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:20px}
+.card{display:block;text-align:left;width:100%;cursor:pointer;background:var(--surface);border:1px solid var(--line);border-top:7px solid var(--c);border-radius:20px;padding:20px 22px 22px;box-shadow:0 1px 4px rgba(60,48,20,.08);transition:transform .14s ease,box-shadow .14s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(60,48,20,.14)}
+.card .em{display:block;font-size:42px;line-height:1;margin-bottom:12px}
+.card .nm{display:block;font-family:var(--serif);font-weight:700;font-size:23px;line-height:1.18;letter-spacing:-.005em}
+.card .ct{display:block;margin-top:6px;color:var(--muted);font-size:16px}
+.tech{--c:var(--c-tech)} .hobby{--c:var(--c-hobby)} .place{--c:var(--c-place)} .life{--c:var(--c-life)}
+
+/* dialog */
+dialog{--c:var(--c-tech);border:0;padding:0;border-radius:24px;width:min(700px,calc(100% - 24px));max-height:calc(100% - 24px);overflow:auto;background:var(--surface);color:var(--ink);box-shadow:0 30px 80px rgba(6,10,30,.45)}
+dialog::backdrop{background:rgba(12,16,36,.6)}
+dialog[open]{animation:pop .24s cubic-bezier(.2,.9,.3,1.12)}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.94)}to{opacity:1;transform:none}}
+.cue{border-top:9px solid var(--c);background:color-mix(in srgb,var(--c) 13%,var(--surface));padding:18px 24px 28px}
+.cue-top{display:flex;align-items:center;gap:12px}
+.cue-top .em{font-size:30px;line-height:1}
+.cue-top .who{margin-right:auto;line-height:1.25}
+.cue-top .who b{display:block;font-family:var(--serif);font-size:19px;font-weight:700}
+.cue-top .who span{font-size:14px;color:var(--muted)}
+.cue button{background:transparent;border:1.5px solid var(--line);border-radius:999px;padding:4px 14px;font-size:14px;cursor:pointer;background:var(--surface)}
+.cue button.x{width:36px;height:36px;padding:0;font-size:22px;line-height:1}
+.q{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.8vw,38px);line-height:1.15;letter-spacing:-.01em;margin:22px 0 0;text-wrap:balance}
+.q.swap{animation:swap .22s ease}
+@keyframes swap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.dbody{padding:22px 24px 24px;display:grid;gap:16px}
+.timer{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center}
+.clock{font-family:var(--serif);font-weight:700;font-size:36px;line-height:1;font-variant-numeric:tabular-nums;min-width:2.6ch}
+.clock.low{color:var(--alert)}
+.bar2{height:10px;border-radius:999px;background:var(--soft);border:1px solid var(--line);overflow:hidden}
+.bar2 i{display:block;height:100%;background:var(--c);transform-origin:left center;transition:transform .25s linear}
+.bar2 i.low{background:var(--alert)}
+@media(max-width:560px){.timer{grid-template-columns:auto 1fr}.timer .btn{grid-column:1/-1}}
+.status{margin:0;min-height:1.6em;font-size:15px;color:var(--muted)}
+.status.warn{color:var(--alert)}
+label.lab{font-weight:600;display:block;margin-bottom:2px}
+.tip{margin:0 0 8px;font-size:14px;color:var(--muted)}
+textarea,input[type="text"]{width:100%;font:inherit;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px}
+textarea{min-height:130px;resize:vertical;line-height:1.5}
+textarea:focus,input[type="text"]:focus{outline:none;border-color:var(--focus);box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 25%,transparent)}
+.meta{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.starters{display:flex;flex-wrap:wrap;gap:8px}
+.starters button{border:1.5px dashed var(--line);background:transparent;border-radius:999px;padding:3px 12px;font-size:14px;cursor:pointer}
+.starters button:hover{border-style:solid;border-color:var(--c)}
+#wc{font-size:14px;color:var(--muted);white-space:nowrap;padding-top:5px}
+.actions{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.actions .right{display:flex;gap:10px;flex-wrap:wrap}
+
+/* answers */
+.log{margin-top:60px;border-top:1.5px solid var(--line);padding-top:28px}
+.log-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px}
+.namebox{max-width:280px;width:100%}
+.namebox label{font-size:14px;color:var(--muted);display:block;margin-bottom:4px}
+.empty{color:var(--muted);max-width:56ch;margin:16px 0 0}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 6px}
+.tools .btn{padding:8px 18px;font-size:15px}
+.entries{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:16px}
+.entry{background:var(--surface);border:1px solid var(--line);border-left:7px solid var(--c);border-radius:16px;padding:16px 20px}
+.entry .topic{font-size:14px;color:var(--muted);margin:0 0 4px}
+.entry .eq{font-family:var(--serif);font-weight:650;font-size:20px;line-height:1.25;margin:0 0 8px}
+.entry .ea{margin:0;max-width:68ch;white-space:pre-wrap}
+.entry .foot{display:flex;align-items:center;gap:14px;margin-top:10px;font-size:14px;color:var(--muted)}
+.entry .foot button{background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;color:var(--muted)}
+
+@media(prefers-reduced-motion:reduce){
+  dialog[open],.q.swap{animation:none}
+  .card,.bar2 i{transition:none}
+  .card:hover{transform:none}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <h1>IELTS Speaking Part 1</h1>
+    <p class="lede">Pick a topic card. A question pops up: answer it out loud, then write down what you said.</p>
+    <p class="lede" lang="vi">Chọn một chủ đề, trả lời câu hỏi bằng lời, rồi viết lại câu trả lời của em.</p>
+  </header>
+
+  <div class="bar">
+    <div class="cats" id="cats" role="group" aria-label="Filter by category"></div>
+    <div class="ctrl">
+      <span class="timelab" id="timelab">Speaking time</span>
+      <div class="seg" id="seg" role="group" aria-labelledby="timelab"></div>
+      <button class="btn primary" id="rand" type="button">Random question</button>
+    </div>
+  </div>
+  <p class="note" id="note" role="status"></p>
+
+  <div class="grid" id="grid"></div>
+
+  <section class="log" aria-labelledby="loghead">
+    <div class="log-head">
+      <h2 id="loghead">Your answers</h2>
+      <div class="namebox">
+        <label for="name">Your name (added when you copy)</label>
+        <input id="name" type="text" maxlength="60" autocomplete="name" placeholder="Nguyen Van A">
+      </div>
+    </div>
+    <p class="empty" id="empty">No answers yet. Pick a topic, speak, then save your answer and it will appear here.</p>
+    <div class="tools" id="tools" hidden>
+      <button class="btn primary" id="copyAll" type="button">Copy all answers</button>
+      <button class="btn ghost" id="clearAll" type="button">Clear all</button>
+    </div>
+    <ul class="entries" id="entries"></ul>
+  </section>
+</main>
+
+<dialog id="dlg" aria-labelledby="qtext">
+  <div class="cue">
+    <div class="cue-top">
+      <span class="em" id="qem" aria-hidden="true"></span>
+      <div class="who"><b id="qtopic"></b><span id="qcat"></span></div>
+      <button type="button" id="hear">Hear it</button>
+      <button type="button" class="x" id="close" aria-label="Close">&times;</button>
+    </div>
+    <p class="q" id="qtext"></p>
+  </div>
+  <div class="dbody">
+    <div class="timer">
+      <div class="clock" id="clock">0:20</div>
+      <div class="bar2" aria-hidden="true"><i id="fill"></i></div>
+      <button type="button" class="btn primary" id="speak">Start speaking</button>
+    </div>
+    <p class="status" id="status" role="status"></p>
+    <div>
+      <label class="lab" for="ans">Your answer</label>
+      <p class="tip">Answer the question directly, then add a reason or an example. Two or three sentences is enough.</p>
+      <textarea id="ans" placeholder="Your spoken words appear here, or type your answer."></textarea>
+    </div>
+    <div class="meta">
+      <div class="starters" id="starters" aria-label="Sentence starters"></div>
+      <span id="wc">0 words</span>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn ghost" id="skip">Different question</button>
+      <div class="right">
+        <button type="button" class="btn line" id="saveClose">Save and close</button>
+        <button type="button" class="btn primary" id="saveNext">Save and next</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- data ---------- */
+var CATS = {
+  tech: {label:"Công nghệ"},
+  hobby:{label:"Sở thích"},
+  place:{label:"Địa điểm"},
+  life: {label:"Đời sống"}
+};
+var TOPICS = [
+  {n:"Computers/Tablets", e:"💻", c:"tech", q:[
+    "Do you use a computer or a tablet more often?",
+    "What do you usually use your computer or tablet for?",
+    "When did you first use a computer?",
+    "Do you think tablets will replace computers one day?",
+    "Do you prefer reading on a tablet or on paper?",
+    "Have you ever had a problem with your computer or tablet?",
+    "Would you like to buy a new computer or tablet in the future?",
+    "Is it easy for you to learn how to use new devices?"]},
+  {n:"Collecting Things", e:"🧸", c:"hobby", q:[
+    "Have you ever collected anything?",
+    "What kinds of things do people in your country like to collect?",
+    "Did you collect anything when you were a child?",
+    "Do you think collecting things is a good hobby?",
+    "Is there anything you would like to collect in the future?",
+    "Do you prefer to keep things or throw them away?",
+    "Do you know anyone who collects something interesting?",
+    "Would you spend a lot of money on something you collect?"]},
+  {n:"Street Market", e:"🧺", c:"place", q:[
+    "Are there many street markets in your hometown?",
+    "Do you like going to street markets?",
+    "What kinds of things can people buy at a street market?",
+    "Do you prefer shopping at a street market or in a supermarket?",
+    "How often do you go to a street market?",
+    "Do you enjoy bargaining when you shop?",
+    "Do you think street markets will still be popular in the future?",
+    "Would you take a foreign visitor to a street market?"]},
+  {n:"Travelling", e:"✈️", c:"life", q:[
+    "Do you like travelling?",
+    "How do you usually travel when you go on a trip?",
+    "Do you prefer to travel alone or with other people?",
+    "What was the last place you visited?",
+    "Is there a place you would like to visit in the future?",
+    "What do you usually take with you when you travel?",
+    "Do you like taking photos when you travel?",
+    "What was your most memorable trip?"]},
+  {n:"Watch", e:"⌚", c:"tech", q:[
+    "Do you wear a watch?",
+    "Do you prefer digital watches or traditional watches?",
+    "Have you ever received a watch as a gift?",
+    "Do you think it is important to be on time?",
+    "Do people in your country often wear watches?",
+    "Do you use your phone to check the time?",
+    "Would you like to buy a smartwatch?",
+    "What do you think of expensive watches?"]},
+  {n:"Cars", e:"🚗", c:"tech", q:[
+    "Do you like cars?",
+    "Is it common for families in your country to own a car?",
+    "Would you like to have your own car in the future?",
+    "What colour of car do you like best?",
+    "Do you prefer travelling by car or by public transport?",
+    "Have you ever learned to drive?",
+    "Do you think cars are important in modern life?",
+    "Do you enjoy long journeys by car?"]},
+  {n:"Websites", e:"🌐", c:"tech", q:[
+    "What websites do you visit most often?",
+    "How often do you use the internet each day?",
+    "Do you use websites to study or to learn new things?",
+    "Do you prefer shopping on websites or in shops?",
+    "What do you think makes a website easy to use?",
+    "Have you ever made or designed a website?",
+    "Do you trust the information you find on websites?",
+    "Do you think websites will change in the future?"]},
+  {n:"Mirrors", e:"🪞", c:"life", q:[
+    "Do you have a mirror in your home?",
+    "How often do you look in the mirror each day?",
+    "Where do you keep the mirrors in your home?",
+    "Do you think mirrors are important in daily life?",
+    "Have you ever bought a mirror?",
+    "What kinds of mirrors do you like?",
+    "Do you like looking at yourself in photos?",
+    "Do you think people spend too much time looking in mirrors?"]},
+  {n:"Public Gardens & Parks", e:"🌳", c:"place", q:[
+    "Are there many parks in your hometown?",
+    "Do you often go to parks or public gardens?",
+    "What do people usually do in parks in your country?",
+    "Did you visit parks when you were a child?",
+    "Do you prefer to visit a park alone or with other people?",
+    "What would you like to see in a public garden?",
+    "Do you think cities need more parks?",
+    "Would you like to have a garden at home?"]},
+  {n:"Shopping", e:"🛍️", c:"life", q:[
+    "Do you like shopping?",
+    "How often do you go shopping?",
+    "Do you prefer shopping alone or with friends?",
+    "What was the last thing you bought?",
+    "Do you prefer online shopping or shopping in shops?",
+    "Do you make a list before you go shopping?",
+    "What kinds of shops do you like to visit?",
+    "Do you enjoy shopping for gifts?"]},
+  {n:"Tidiness", e:"🧹", c:"life", q:[
+    "Are you a tidy person?",
+    "How often do you tidy your room?",
+    "Who keeps your home tidy?",
+    "Did you have to tidy your room when you were a child?",
+    "Do you think it is important to keep things tidy?",
+    "Do you find it easy to keep your desk clean?",
+    "What happens when you can't find something in a messy room?",
+    "Do you prefer a very tidy home or a comfortable, lived-in one?"]},
+  {n:"Music", e:"🎵", c:"hobby", q:[
+    "What kinds of music do you like?",
+    "When do you usually listen to music?",
+    "Do you play any musical instruments?",
+    "Did you learn music when you were a child?",
+    "Do you prefer listening to music alone or with other people?",
+    "Have you ever been to a live concert?",
+    "Do you think music is important for young people?",
+    "Has the music you like changed over the years?"]},
+  {n:"Views", e:"🏞️", c:"place", q:[
+    "Do you like looking at interesting views?",
+    "What is the best view in your hometown?",
+    "Is there a nice view from your home?",
+    "Do you take photos of beautiful views?",
+    "Where do you like to go to enjoy a good view?",
+    "Do you prefer views of nature or views of a city?",
+    "Would you like a home with a great view?",
+    "Do you think people in your country enjoy scenic views?"]},
+  {n:"Childhood Activities", e:"👶", c:"hobby", q:[
+    "What did you like doing when you were a child?",
+    "What games did you play when you were young?",
+    "Did you play outside a lot as a child?",
+    "Who did you usually play with?",
+    "Do children today enjoy the same activities as you did?",
+    "Did you have a favourite toy when you were a child?",
+    "Do you still do any of the activities you enjoyed as a child?",
+    "What did you usually do after school as a child?"]},
+  {n:"Building", e:"🏢", c:"place", q:[
+    "What kind of building do you live in?",
+    "Is there an interesting building near your home?",
+    "What is your favourite building in your hometown?",
+    "Do you prefer modern buildings or old buildings?",
+    "Would you like to work in a tall building?",
+    "Have you ever visited a famous building?",
+    "What do you think about the buildings in your city?",
+    "Would you like to design a building one day?"]},
+  {n:"Scenery", e:"🌄", c:"place", q:[
+    "Do you like beautiful scenery?",
+    "What kind of scenery is there in your country?",
+    "Do you prefer scenery in the mountains or by the sea?",
+    "Have you ever visited a place with amazing scenery?",
+    "Do you like taking photos of scenery?",
+    "Does beautiful scenery make you feel relaxed?",
+    "Is there any scenery near your home that you like?",
+    "Would you like to live somewhere with beautiful scenery?"]},
+  {n:"Reading", e:"📖", c:"hobby", q:[
+    "Do you enjoy reading?",
+    "What do you usually read?",
+    "Did you read a lot when you were a child?",
+    "Do you prefer reading paper books or e-books?",
+    "Where do you like to read?",
+    "Do you think reading habits are changing among young people?",
+    "What was the last book you read?",
+    "Do you ever read in English?"]},
+  {n:"Sports Team", e:"⚽", c:"hobby", q:[
+    "Do you like being part of a team?",
+    "Have you ever played in a sports team?",
+    "What team sports are popular in your country?",
+    "Do you prefer team sports or individual sports?",
+    "Do you support any sports team?",
+    "What do you think makes a good team player?",
+    "Did you play team games at school?",
+    "Do you like watching team sports on TV?"]},
+  {n:"Walking", e:"🚶", c:"life", q:[
+    "Do you like walking?",
+    "How often do you walk each day?",
+    "Do you prefer to walk or take the bus for short trips?",
+    "Where do you like to walk?",
+    "Do you prefer walking alone or with someone?",
+    "Do you think walking is good for your health?",
+    "Did you walk to school when you were younger?",
+    "Is it easy to walk around your neighbourhood?"]},
+  {n:"Typing", e:"⌨️", c:"tech", q:[
+    "Do you type a lot every day?",
+    "Are you a fast typist?",
+    "Do you prefer typing or writing by hand?",
+    "When did you learn to type?",
+    "Do you use your phone or a keyboard for typing?",
+    "Do you think typing skills are important today?",
+    "Do you find it easy to type in English?",
+    "Do you think people will still write by hand in the future?"]}
+];
+var STARTERS = ["Yes, I do, because","Not really, because","I usually","For example,","When I was younger,","These days,"];
+var TIMES = [15,20,30,45];
+
+var QUESTIONS = [];
+TOPICS.forEach(function(t,ti){ t.q.forEach(function(q,i){ QUESTIONS.push({id:ti+":"+i, ti:ti, q:q}); }); });
+
+/* ---------- helpers ---------- */
+function $(id){ return document.getElementById(id); }
+var store = {
+  get:function(k,def){ try{ var v=localStorage.getItem(k); return v===null?def:JSON.parse(v); }catch(_){ return def; } },
+  set:function(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(_){} }
+};
+function fmt(s){ return Math.floor(s/60)+":"+String(s%60).padStart(2,"0"); }
+function words(s){ return s.trim().split(/\s+/).filter(Boolean).length; }
+
+/* ---------- state ---------- */
+var log = store.get("p1.log",[]); if(!Array.isArray(log)) log = [];
+var total = store.get("p1.time",20); if(TIMES.indexOf(total)<0) total = 20;
+var studentName = store.get("p1.name",""); if(typeof studentName!=="string") studentName = "";
+var catFilter = null;
+var seen = new Set();
+var current = null;
+var mode = {kind:"random"};
+var running = false, left = total, endAt = 0, timerId = null;
+
+var el = {
+  cats:$("cats"), seg:$("seg"), rand:$("rand"), note:$("note"), grid:$("grid"),
+  dlg:$("dlg"), qem:$("qem"), qtopic:$("qtopic"), qcat:$("qcat"), qtext:$("qtext"),
+  hear:$("hear"), close:$("close"), clock:$("clock"), fill:$("fill"), speak:$("speak"),
+  status:$("status"), ans:$("ans"), starters:$("starters"), wc:$("wc"),
+  skip:$("skip"), saveClose:$("saveClose"), saveNext:$("saveNext"),
+  name:$("name"), empty:$("empty"), tools:$("tools"), entries:$("entries"),
+  copyAll:$("copyAll"), clearAll:$("clearAll")
+};
+function note(msg){ el.note.textContent = msg; }
+
+/* ---------- topic grid + filters ---------- */
+function renderCats(){
+  el.cats.textContent = "";
+  function add(key,label){
+    var b = document.createElement("button");
+    b.type="button"; b.className="cat";
+    if(key){ b.style.setProperty("--c","var(--c-"+key+")"); }
+    var dot = document.createElement("i"); dot.hidden = !key;
+    var span = document.createElement("span"); span.textContent = label;
+    b.appendChild(dot); b.appendChild(span);
+    b.setAttribute("aria-pressed", String(catFilter===key));
+    b.addEventListener("click", function(){ catFilter = key; renderCats(); renderGrid(); });
+    el.cats.appendChild(b);
+  }
+  add(null,"Tất cả");
+  Object.keys(CATS).forEach(function(k){ add(k, CATS[k].label); });
+}
+function renderGrid(){
+  el.grid.textContent = "";
+  TOPICS.forEach(function(t,ti){
+    if(catFilter && t.c!==catFilter) return;
+    var b = document.createElement("button");
+    b.type="button"; b.className="card "+t.c;
+    var em = document.createElement("span"); em.className="em"; em.setAttribute("aria-hidden","true"); em.textContent = t.e;
+    var nm = document.createElement("span"); nm.className="nm"; nm.textContent = t.n;
+    var ct = document.createElement("span"); ct.className="ct"; ct.textContent = CATS[t.c].label;
+    b.appendChild(em); b.appendChild(nm); b.appendChild(ct);
+    b.addEventListener("click", function(){ mode = {kind:"topic", ti:ti}; note(""); drawFrom(mode); });
+    el.grid.appendChild(b);
+  });
+}
+function renderSeg(){
+  el.seg.textContent = "";
+  TIMES.forEach(function(s){
+    var b = document.createElement("button");
+    b.type="button"; b.textContent = s+"s";
+    b.setAttribute("aria-pressed", String(s===total));
+    b.addEventListener("click", function(){ total=s; store.set("p1.time",s); renderSeg(); });
+    el.seg.appendChild(b);
+  });
+}
+
+/* ---------- drawing questions ---------- */
+function poolFor(m){
+  if(m.kind==="topic") return QUESTIONS.filter(function(q){ return q.ti===m.ti; });
+  return QUESTIONS.filter(function(q){ return !catFilter || TOPICS[q.ti].c===catFilter; });
+}
+function drawFrom(m){
+  var pool = poolFor(m);
+  var fresh = pool.filter(function(q){ return !seen.has(q.id); });
+  var reshuffled = false;
+  if(!fresh.length){ pool.forEach(function(q){ seen.delete(q.id); }); fresh = pool.slice(); reshuffled = true; }
+  if(fresh.length>1 && current) fresh = fresh.filter(function(q){ return q.id!==current.id; });
+  var q = fresh[Math.floor(Math.random()*fresh.length)];
+  seen.add(q.id);
+  current = q;
+  openCard(q, reshuffled ? "You have seen every question here, so the set is shuffled again." : "");
+}
+
+/* ---------- card ---------- */
+function setStatus(msg, warn){ el.status.textContent = msg; el.status.classList.toggle("warn", !!warn); }
+function updateWC(){ var n = words(el.ans.value); el.wc.textContent = n+(n===1?" word":" words"); }
+function renderClock(){
+  el.clock.textContent = fmt(left);
+  el.fill.style.transform = "scaleX("+(total? left/total : 0)+")";
+  var low = running && left<=5;
+  el.clock.classList.toggle("low", low);
+  el.fill.classList.toggle("low", low);
+}
+function openCard(q, extra){
+  var t = TOPICS[q.ti];
+  el.dlg.style.setProperty("--c","var(--c-"+t.c+")");
+  el.qem.textContent = t.e;
+  el.qtopic.textContent = t.n;
+  el.qcat.textContent = CATS[t.c].label;
+  el.qtext.textContent = q.q;
+  el.qtext.classList.remove("swap"); void el.qtext.offsetWidth; el.qtext.classList.add("swap");
+  el.ans.value = "";
+  updateWC();
+  running = false; left = total;
+  el.speak.textContent = "Start speaking";
+  el.speak.classList.remove("rec");
+  renderClock();
+  setStatus((extra ? extra+" " : "")+"Press Start speaking and answer out loud for "+total+" seconds. Bấm nút rồi nói to câu trả lời.");
+  if(!el.dlg.open){
+    try{ el.dlg.showModal(); }catch(_){ el.dlg.setAttribute("open",""); }
+  }
+  el.speak.focus();
+}
+function cleanup(){
+  stopTimer(false, true);
+  try{ if("speechSynthesis" in window) window.speechSynthesis.cancel(); }catch(_){}
+}
+function closeCard(){
+  cleanup();
+  try{ if(el.dlg.open) el.dlg.close(); }catch(_){ el.dlg.removeAttribute("open"); }
+}
+
+/* ---------- timer + speech ---------- */
+function startTimer(){
+  running = true; left = total; endAt = Date.now()+total*1000;
+  el.speak.textContent = "Stop";
+  el.speak.classList.add("rec");
+  renderClock();
+  timerId = setInterval(function(){
+    left = Math.max(0, Math.ceil((endAt-Date.now())/1000));
+    renderClock();
+    if(left<=0) stopTimer(true);
+  }, 200);
+  startRec();
+}
+function stopTimer(timeUp, silent){
+  if(timerId){ clearInterval(timerId); timerId = null; }
+  var was = running;
+  running = false;
+  stopRec();
+  el.speak.classList.remove("rec");
+  el.speak.textContent = was ? "Speak again" : "Start speaking";
+  renderClock();
+  if(was && !silent){
+    setStatus(timeUp
+      ? "Time is up. Read your answer, fix any mistakes, then save. Hết giờ, đọc lại và sửa trước khi lưu."
+      : "Stopped. Edit your answer below, then save it.");
+  }
+}
+var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+var rec = null, want = false, base = "";
+function makeRec(){
+  rec = new SR();
+  rec.lang = "en-US";
+  rec.continuous = true;
+  rec.interimResults = true;
+  rec.onresult = function(e){
+    var t = "";
+    for(var i=0;i<e.results.length;i++) t += e.results[i][0].transcript;
+    el.ans.value = (base ? base+" " : "") + t.trim();
+    updateWC();
+  };
+  rec.onerror = function(e){
+    if(e.error==="not-allowed" || e.error==="service-not-allowed"){
+      want = false;
+      setStatus("The microphone is blocked. Speak out loud anyway, then type your answer. Micro đang bị chặn, hãy nói to rồi gõ lại câu trả lời.", true);
+    } else if(e.error==="audio-capture"){
+      want = false;
+      setStatus("No microphone found. Speak out loud, then type your answer.", true);
+    }
+  };
+  rec.onend = function(){
+    if(want && running){ base = el.ans.value.trim(); try{ makeRec(); }catch(_){} }
+  };
+  rec.start();
+}
+function startRec(){
+  if(!SR){
+    setStatus("Voice typing does not work in this browser (use Chrome or Edge). Speak out loud, then type your answer. Hãy nói to rồi gõ lại.");
+    return;
+  }
+  base = el.ans.value.trim();
+  want = true;
+  setStatus("Listening. Speak now.");
+  try{ makeRec(); }catch(_){ want = false; }
+}
+function stopRec(){
+  want = false;
+  try{ if(rec) rec.stop(); }catch(_){}
+}
+
+/* ---------- save + log ---------- */
+function saveEntry(){
+  var a = el.ans.value.trim();
+  if(!a){ setStatus("Speak or type something first. Hãy nói hoặc viết câu trả lời trước.", true); el.ans.focus(); return false; }
+  var t = TOPICS[current.ti];
+  log.push({id:Date.now(), t:t.n, e:t.e, c:t.c, q:current.q, a:a});
+  store.set("p1.log", log);
+  renderLog();
+  return true;
+}
+function renderLog(){
+  el.entries.textContent = "";
+  var has = log.length>0;
+  el.empty.hidden = has;
+  el.tools.hidden = !has;
+  log.forEach(function(e){
+    var li = document.createElement("li"); li.className = "entry";
+    li.style.setProperty("--c","var(--c-"+(CATS[e.c]?e.c:"tech")+")");
+    var t = document.createElement("p"); t.className="topic"; t.textContent = (e.e||"")+" "+e.t;
+    var q = document.createElement("p"); q.className="eq"; q.textContent = e.q;
+    var a = document.createElement("p"); a.className="ea"; a.textContent = e.a;
+    var foot = document.createElement("div"); foot.className="foot";
+    var n = words(e.a);
+    var w = document.createElement("span"); w.textContent = n+(n===1?" word":" words");
+    var rm = document.createElement("button"); rm.type="button"; rm.textContent="Remove";
+    rm.addEventListener("click", function(){
+      log = log.filter(function(x){ return x.id!==e.id; });
+      store.set("p1.log", log);
+      renderLog();
+    });
+    foot.appendChild(w); foot.appendChild(rm);
+    li.appendChild(t); li.appendChild(q); li.appendChild(a); li.appendChild(foot);
+    el.entries.appendChild(li);
+  });
+}
+function copyText(text){
+  return new Promise(function(resolve){
+    function fallback(){
+      try{
+        var ta = document.createElement("textarea");
+        ta.value = text; ta.setAttribute("readonly","");
+        ta.style.cssText = "position:fixed;top:0;left:0;opacity:0";
+        document.body.appendChild(ta); ta.select();
+        var ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        resolve(ok);
+      }catch(_){ resolve(false); }
+    }
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){ resolve(true); }, fallback);
+      } else fallback();
+    }catch(_){ fallback(); }
+  });
+}
+function flash(btn, msg){
+  var old = btn.dataset.label || btn.textContent;
+  btn.dataset.label = old;
+  btn.textContent = msg;
+  setTimeout(function(){ btn.textContent = old; }, 1600);
+}
+
+/* ---------- wiring ---------- */
+el.rand.addEventListener("click", function(){ mode = {kind:"random"}; note(""); drawFrom(mode); });
+el.close.addEventListener("click", closeCard);
+el.dlg.addEventListener("close", cleanup);
+el.dlg.addEventListener("click", function(e){ if(e.target===el.dlg) closeCard(); });
+el.skip.addEventListener("click", function(){ cleanup(); drawFrom(mode); });
+el.saveClose.addEventListener("click", function(){
+  if(saveEntry()){
+    closeCard();
+    note("Saved. "+log.length+(log.length===1?" answer":" answers")+" so far.");
+  }
+});
+el.saveNext.addEventListener("click", function(){
+  if(saveEntry()){ cleanup(); drawFrom(mode); }
+});
+el.speak.addEventListener("click", function(){ if(running) stopTimer(false); else startTimer(); });
+el.ans.addEventListener("input", updateWC);
+el.ans.addEventListener("keydown", function(e){
+  if((e.ctrlKey||e.metaKey) && e.key==="Enter"){ e.preventDefault(); el.saveNext.click(); }
+});
+
+STARTERS.forEach(function(s){
+  var b = document.createElement("button");
+  b.type="button"; b.textContent=s;
+  b.addEventListener("click", function(){
+    var v = el.ans.value;
+    el.ans.value = v + (v && !/\s$/.test(v) ? " " : "") + s + " ";
+    el.ans.focus();
+    el.ans.setSelectionRange(el.ans.value.length, el.ans.value.length);
+    updateWC();
+  });
+  el.starters.appendChild(b);
+});
+
+if(!("speechSynthesis" in window)) el.hear.hidden = true;
+el.hear.addEventListener("click", function(){
+  try{
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(current.q);
+    u.lang = "en-GB"; u.rate = 0.92;
+    window.speechSynthesis.speak(u);
+  }catch(_){}
+});
+
+el.name.value = studentName;
+el.name.addEventListener("input", function(){ studentName = el.name.value; store.set("p1.name", studentName); });
+
+el.copyAll.addEventListener("click", function(){
+  var lines = ["IELTS Speaking Part 1 answers"];
+  if(studentName.trim()) lines.push("Student: "+studentName.trim());
+  lines.push("Date: "+new Date().toLocaleDateString(), "");
+  log.forEach(function(e,i){
+    lines.push((i+1)+". ["+e.t+"] "+e.q, "Answer: "+e.a, "");
+  });
+  copyText(lines.join("\n")).then(function(ok){
+    flash(el.copyAll, ok ? "Copied" : "Copy failed, select the text instead");
+  });
+});
+var armed = false, armTimer = null;
+el.clearAll.addEventListener("click", function(){
+  if(!armed){
+    armed = true;
+    el.clearAll.textContent = "Click again to clear all";
+    armTimer = setTimeout(function(){ armed=false; el.clearAll.textContent="Clear all"; }, 3000);
+    return;
+  }
+  clearTimeout(armTimer); armed = false;
+  el.clearAll.textContent = "Clear all";
+  log = []; store.set("p1.log", log); renderLog();
+});
+
+renderCats(); renderGrid(); renderSeg(); renderLog();
+})();
+</script>
+</body>
+</html>
