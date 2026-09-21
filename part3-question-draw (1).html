@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IELTS Speaking Part 3 question draw</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+  --bg:#EEF2F8; --surface:#FFFFFF; --ink:#101B3A; --muted:#55607F; --line:#D3DBEA; --soft:#E1E8F6;
+  --accent:#2A45F5; --accent-ink:#FFFFFF; --signal:#FFC93C; --alert:#D6383E;
+  --cue:#2A45F5; --cue-ink:#FFFFFF;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0C1226; --surface:#151D38; --ink:#EAEFFC; --muted:#9AA5C8; --line:#28335C; --soft:#1C2647;
+    --accent:#8296FF; --accent-ink:#0C1226; --signal:#FFD25E; --alert:#FF6B70;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0C1226; --surface:#151D38; --ink:#EAEFFC; --muted:#9AA5C8; --line:#28335C; --soft:#1C2647;
+  --accent:#8296FF; --accent-ink:#0C1226; --signal:#FFD25E; --alert:#FF6B70;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+.wrap{max-width:1040px;margin:0 auto;padding:36px 20px 72px}
+h1{font-family:var(--display);font-weight:750;font-size:clamp(36px,6.5vw,60px);line-height:1;letter-spacing:-.025em;margin:0 0 16px}
+h2{font-family:var(--display);font-weight:650;font-size:20px;line-height:1.2;margin:0 0 12px}
+.lede{max-width:56ch;margin:0 0 6px;color:var(--muted)}
+.lede.vi{font-size:16px}
+
+.stage{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;margin-top:38px;align-items:start}
+@media(max-width:820px){.stage{grid-template-columns:1fr;gap:32px}}
+
+/* the deck */
+.deck{position:relative;margin:0 14px 18px 8px}
+.deck::before,.deck::after{content:"";position:absolute;inset:0;border-radius:26px;background:var(--soft);border:1.5px solid var(--line)}
+.deck::before{transform:translate(12px,14px) rotate(2.2deg)}
+.deck::after{transform:translate(-7px,8px) rotate(-1.6deg)}
+.draw{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:space-between;gap:36px;width:100%;min-height:300px;text-align:left;background:var(--cue);color:var(--cue-ink);border:0;border-radius:26px;padding:28px;cursor:pointer;transition:transform .16s ease}
+.draw:hover{transform:translateY(-4px) rotate(-.5deg)}
+.draw:focus-visible{outline-color:var(--signal);outline-offset:4px}
+.draw .mark{font-family:var(--display);font-weight:800;font-size:112px;line-height:.75;color:var(--signal)}
+.draw .big{display:block;font-family:var(--display);font-weight:750;font-size:clamp(30px,5vw,42px);line-height:1.02;letter-spacing:-.02em}
+.draw .sub{display:block;margin-top:8px;font-size:16px;opacity:.92}
+.note{min-height:1.6em;margin:34px 0 0;color:var(--muted);font-size:16px}
+
+/* controls */
+.panel{display:grid;gap:30px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-size:15px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;background:var(--surface);padding:3px}
+.seg button{border:0;background:transparent;border-radius:999px;padding:6px 16px;cursor:pointer;font-weight:500}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.hint{margin:10px 0 0;color:var(--muted);font-size:15px}
+
+/* dialog */
+dialog{border:0;padding:0;border-radius:26px;width:min(720px,calc(100% - 24px));max-height:calc(100% - 24px);overflow:auto;background:var(--surface);color:var(--ink);box-shadow:0 30px 80px rgba(6,10,30,.45)}
+dialog::backdrop{background:rgba(8,13,34,.62)}
+dialog[open]{animation:pop .24s cubic-bezier(.2,.9,.3,1.12)}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.94)}to{opacity:1;transform:none}}
+.cue{background:var(--cue);color:var(--cue-ink);padding:20px 24px 30px}
+.cue-top{display:flex;align-items:center;gap:10px}
+.tag{background:rgba(255,255,255,.18);border-radius:999px;padding:3px 12px;font-size:14px;font-weight:600;margin-right:auto}
+.cue button{background:transparent;border:1.5px solid rgba(255,255,255,.55);color:var(--cue-ink);border-radius:999px;padding:4px 14px;font-size:14px;cursor:pointer}
+.cue button.x{width:36px;height:36px;padding:0;font-size:22px;line-height:1}
+.cue button:focus-visible{outline-color:var(--signal)}
+.q{font-family:var(--display);font-weight:750;font-size:clamp(26px,4.8vw,38px);line-height:1.1;letter-spacing:-.015em;margin:22px 0 0;text-wrap:balance}
+.dbody{padding:22px 24px 24px;display:grid;gap:16px}
+.timer{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center}
+.clock{font-family:var(--display);font-weight:700;font-size:36px;line-height:1;font-variant-numeric:tabular-nums;min-width:2.8ch}
+.clock.low{color:var(--alert)}
+.bar{height:10px;border-radius:999px;background:var(--soft);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--signal);transform-origin:left center;transition:transform .25s linear}
+.bar i.low{background:var(--alert)}
+@media(max-width:560px){.timer{grid-template-columns:auto 1fr}.timer .btn{grid-column:1/-1}}
+.status{margin:0;min-height:1.6em;font-size:15px;color:var(--muted)}
+.status.warn{color:var(--alert)}
+label.lab{font-weight:600;font-size:16px;display:block;margin-bottom:6px}
+textarea,input[type="text"]{width:100%;font:inherit;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px}
+textarea{min-height:150px;resize:vertical;line-height:1.5}
+textarea:focus,input[type="text"]:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}
+.meta{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.starters{display:flex;flex-wrap:wrap;gap:8px}
+.starters button{border:1.5px dashed var(--line);background:transparent;border-radius:999px;padding:4px 12px;font-size:14px;cursor:pointer}
+.starters button:hover{border-style:solid;border-color:var(--accent)}
+#wc{font-size:14px;color:var(--muted);white-space:nowrap;padding-top:6px}
+.actions{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.btn{border:1.5px solid transparent;border-radius:999px;padding:11px 22px;font-weight:600;cursor:pointer}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;border-color:var(--line)}
+.btn.rec{background:var(--alert);color:#fff}
+.btn:hover{filter:brightness(1.06)}
+
+/* answers */
+.log{margin-top:64px;border-top:1.5px solid var(--line);padding-top:28px}
+.log-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:8px}
+.log-head h2{margin:0;font-size:26px}
+.namebox{max-width:280px;width:100%}
+.namebox label{font-size:14px;color:var(--muted);display:block;margin-bottom:4px}
+.empty{color:var(--muted);max-width:52ch;margin:16px 0 0}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 4px}
+.tools .btn{padding:8px 18px;font-size:15px}
+.entries{list-style:none;margin:0;padding:0}
+.entry{padding:22px 0;border-bottom:1px solid var(--line)}
+.entry .topic{font-size:14px;color:var(--muted);margin:0 0 4px}
+.entry .eq{font-family:var(--display);font-weight:650;font-size:21px;line-height:1.2;margin:0 0 10px}
+.entry .ea{margin:0;max-width:68ch;white-space:pre-wrap}
+.entry .foot{display:flex;align-items:center;gap:14px;margin-top:10px;font-size:14px;color:var(--muted)}
+.entry .foot button{background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;color:var(--muted)}
+
+@media(prefers-reduced-motion:reduce){
+  dialog[open]{animation:none}
+  .draw,.bar i{transition:none}
+  .draw:hover{transform:none}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <h1>Part 3 question draw</h1>
+    <p class="lede">Draw a random IELTS Speaking Part 3 question, answer it out loud, then write down what you said.</p>
+    <p class="lede vi" lang="vi">Bốc một câu hỏi Part 3 ngẫu nhiên, nói to câu trả lời, rồi viết lại những gì em đã nói.</p>
+  </header>
+
+  <section class="stage">
+    <div>
+      <div class="deck">
+        <button class="draw" id="draw" type="button">
+          <span class="mark" aria-hidden="true">?</span>
+          <span>
+            <span class="big">Draw a question</span>
+            <span class="sub" id="left"></span>
+          </span>
+        </button>
+      </div>
+      <p class="note" id="note" role="status"></p>
+    </div>
+
+    <div class="panel">
+      <div>
+        <h2>Topics</h2>
+        <div class="chips" id="chips"></div>
+        <p class="hint">Pick one or more topics, or leave "All topics" on. Chọn chủ đề hoặc để tất cả.</p>
+      </div>
+      <div>
+        <h2>Speaking time</h2>
+        <div class="seg" id="seg" role="group" aria-label="Speaking time"></div>
+        <p class="hint">A Part 3 answer usually lasts 30 to 45 seconds.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="log" aria-labelledby="loghead">
+    <div class="log-head">
+      <h2 id="loghead">Your answers</h2>
+      <div class="namebox">
+        <label for="name">Your name (added when you copy)</label>
+        <input id="name" type="text" maxlength="60" autocomplete="name" placeholder="Nguyen Van A">
+      </div>
+    </div>
+    <p class="empty" id="empty">No answers yet. Draw a question, speak, then save your answer and it will appear here.</p>
+    <div class="tools" id="tools" hidden>
+      <button class="btn primary" id="copyAll" type="button">Copy all answers</button>
+      <button class="btn ghost" id="clearAll" type="button">Clear all</button>
+    </div>
+    <ul class="entries" id="entries"></ul>
+  </section>
+</main>
+
+<dialog id="dlg" aria-labelledby="qtext">
+  <div class="cue">
+    <div class="cue-top">
+      <span class="tag" id="qtopic"></span>
+      <button type="button" id="hear">Hear it</button>
+      <button type="button" class="x" id="close" aria-label="Close">&times;</button>
+    </div>
+    <p class="q" id="qtext"></p>
+  </div>
+  <div class="dbody">
+    <div class="timer">
+      <div class="clock" id="clock">0:45</div>
+      <div class="bar" aria-hidden="true"><i id="fill"></i></div>
+      <button type="button" class="btn primary" id="speak">Start speaking</button>
+    </div>
+    <p class="status" id="status" role="status"></p>
+    <div>
+      <label class="lab" for="ans">Your answer</label>
+      <textarea id="ans" placeholder="Your spoken words appear here, or type your answer."></textarea>
+    </div>
+    <div class="meta">
+      <div class="starters" id="starters" aria-label="Sentence starters"></div>
+      <span id="wc">0 words</span>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn ghost" id="skip">Skip question</button>
+      <button type="button" class="btn primary" id="save">Save answer</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- question bank ---------- */
+var BANK = {
+  "Education":[
+    "What do you think makes a good teacher?",
+    "Should students be allowed to choose all the subjects they study at school?",
+    "How has technology changed the way people learn?",
+    "Do you think exams are the best way to measure what a student knows?",
+    "Why do some people continue studying after they start working?",
+    "Is it better to study in your own country or abroad? Why?",
+    "What are the advantages of learning in groups rather than alone?",
+    "Should schools spend more time teaching practical life skills?"
+  ],
+  "Technology":[
+    "How has technology changed the way people communicate?",
+    "Do you think people rely too much on their smartphones?",
+    "What are the advantages and disadvantages of online shopping?",
+    "Will robots and AI take over jobs that people do today?",
+    "Why do some older people find it hard to use new technology?",
+    "Should children have limits on how much time they spend online?",
+    "How can technology help people who live in remote areas?",
+    "Do you think social media brings people closer or pushes them apart?"
+  ],
+  "Work and careers":[
+    "What makes a job satisfying for most people?",
+    "Is a high salary more important than job security? Why?",
+    "Do you think people should stay in one job for their whole career?",
+    "How is working from home different from working in an office?",
+    "What skills will be most important for workers in the future?",
+    "Why do some people prefer to start their own business?",
+    "Should companies offer shorter working weeks?",
+    "How do young people choose their careers these days?"
+  ],
+  "Environment":[
+    "What are the biggest environmental problems in your country?",
+    "Who should be responsible for protecting the environment: governments or individuals?",
+    "Do you think people will care more about nature in the future?",
+    "How can cities reduce air pollution?",
+    "Why do some people find it hard to recycle?",
+    "Should companies be punished if they damage the environment?",
+    "What can schools do to teach children about nature?",
+    "Is it realistic to expect people to use less plastic?"
+  ],
+  "Health and fitness":[
+    "Why do many people find it hard to keep a healthy lifestyle?",
+    "Should the government make unhealthy food more expensive?",
+    "Do you think people exercise enough these days?",
+    "How does stress affect people's daily lives?",
+    "What is the role of schools in encouraging healthy habits?",
+    "Are people healthier now than in the past?",
+    "Why do some people prefer exercising in a group?",
+    "Should sports be compulsory in schools?"
+  ],
+  "Travel and tourism":[
+    "What are the benefits of travelling to other countries?",
+    "How has tourism changed the place where you live?",
+    "Do you think travelling is better with friends or with family?",
+    "Why do some people prefer package tours to travelling independently?",
+    "Can tourism damage local culture? How?",
+    "Will people travel more or less in the future?",
+    "Should popular tourist sites limit the number of visitors?",
+    "How can travel help people understand other cultures?"
+  ],
+  "Family and friends":[
+    "How have family relationships changed in your country over the years?",
+    "Do you think it is better for children to grow up in a big family?",
+    "What is the most important quality in a good friend?",
+    "Why do some people find it hard to make friends as adults?",
+    "Should grandparents help take care of grandchildren?",
+    "How do parents influence the choices their children make?",
+    "Do you think people spend enough time with their families today?",
+    "Is it easier to keep in touch with friends now than in the past?"
+  ],
+  "Food and cooking":[
+    "Why are more people eating fast food than before?",
+    "Do you think traditional dishes will disappear in the future?",
+    "Should children learn how to cook at school?",
+    "How has the way people buy food changed in recent years?",
+    "Is eating out a good way to bring people together?",
+    "What influences the food choices people make?",
+    "Do you think street food is as important as restaurant food?",
+    "Why do some people prefer home-cooked meals?"
+  ],
+  "Media and news":[
+    "Where do most people get their news from these days?",
+    "Do you think the news reports too much bad news?",
+    "Should there be limits on what newspapers and websites can publish?",
+    "How much does advertising influence what people buy?",
+    "Why do some people believe everything they read online?",
+    "Do you think TV programmes are good for children?",
+    "Will printed newspapers disappear in the future?",
+    "How can people tell whether a news story is reliable?"
+  ],
+  "Money and shopping":[
+    "Do you think people spend too much money on things they don't need?",
+    "Should children be given pocket money? Why?",
+    "What are the advantages of saving money regularly?",
+    "Why do some people enjoy shopping more than others?",
+    "How has online payment changed the way people use money?",
+    "Do you think brand names are important to young people?",
+    "Is it wise to borrow money to buy a home?",
+    "What do you think about giving expensive gifts?"
+  ],
+  "City and housing":[
+    "What are the advantages of living in a big city?",
+    "Why are more young people moving to cities?",
+    "Do you think it is better to rent or to buy a home?",
+    "How can cities become more pleasant places to live?",
+    "What problems do very crowded cities have?",
+    "Should old buildings be preserved or replaced by new ones?",
+    "How is life in the countryside different from life in the city?",
+    "What makes a neighbourhood a good place to live?"
+  ],
+  "Culture and traditions":[
+    "Why is it important to keep traditions alive?",
+    "How do young people celebrate festivals differently from older generations?",
+    "Do you think globalisation is making cultures more similar?",
+    "Should museums be free for everyone?",
+    "What can people learn from the history of their country?",
+    "Why do some people prefer traditional clothing on special occasions?",
+    "How can a country protect its cultural heritage?",
+    "Do you think foreign cultures influence young people too much?"
+  ],
+  "Sports and hobbies":[
+    "Why do people enjoy watching sports?",
+    "Do you think professional athletes are paid too much?",
+    "What are the benefits of having a hobby?",
+    "Why do some people give up their hobbies as they grow older?",
+    "Should governments spend money on hosting big sporting events?",
+    "How do team sports differ from individual sports?",
+    "Do you think video games can be a positive hobby?",
+    "How can parents encourage children to try new activities?"
+  ],
+  "Transport":[
+    "How can a city encourage people to use public transport?",
+    "What are the advantages of cycling and walking in cities?",
+    "Do you think cars will still be popular in the future?",
+    "Why is traffic such a serious problem in many big cities?",
+    "Should governments invest more in trains than in roads?",
+    "How has transport changed the way people live and work?",
+    "What would happen if private cars were banned in city centres?",
+    "Do you think young people should learn to drive?"
+  ],
+  "Language learning":[
+    "Why do so many people want to learn English?",
+    "What is the best way to learn a foreign language?",
+    "Do you think children learn languages more easily than adults?",
+    "Will translation apps make language learning unnecessary?",
+    "Should every student learn at least two foreign languages?",
+    "How does speaking a second language help in a career?",
+    "Why do some people feel nervous when speaking a foreign language?",
+    "Do you think minority languages should be protected?"
+  ]
+};
+var STARTERS = ["In my opinion,","The main reason is that","For example,","On the other hand,","Compared with the past,","In the future,"];
+var TIMES = [30,45,60,90];
+
+var TOPICS = Object.keys(BANK);
+var QUESTIONS = [];
+TOPICS.forEach(function(t){ BANK[t].forEach(function(q,i){ QUESTIONS.push({id:t+":"+i,t:t,q:q}); }); });
+
+/* ---------- helpers ---------- */
+function $(id){ return document.getElementById(id); }
+var store = {
+  get:function(k,def){ try{ var v=localStorage.getItem(k); return v===null?def:JSON.parse(v); }catch(_){ return def; } },
+  set:function(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(_){} }
+};
+function fmt(s){ return Math.floor(s/60)+":"+String(s%60).padStart(2,"0"); }
+function words(s){ return s.trim().split(/\s+/).filter(Boolean).length; }
+
+/* ---------- state ---------- */
+var log = store.get("p3.log",[]); if(!Array.isArray(log)) log = [];
+var total = store.get("p3.time",45); if(TIMES.indexOf(total)<0) total = 45;
+var studentName = store.get("p3.name",""); if(typeof studentName!=="string") studentName = "";
+var selected = new Set();
+var seen = new Set();
+var current = null;
+var running = false, left = total, endAt = 0, timerId = null;
+
+var el = {
+  draw:$("draw"), left:$("left"), note:$("note"), chips:$("chips"), seg:$("seg"),
+  dlg:$("dlg"), qtopic:$("qtopic"), qtext:$("qtext"), hear:$("hear"), close:$("close"),
+  clock:$("clock"), fill:$("fill"), speak:$("speak"), status:$("status"),
+  ans:$("ans"), starters:$("starters"), wc:$("wc"), skip:$("skip"), save:$("save"),
+  name:$("name"), empty:$("empty"), tools:$("tools"), entries:$("entries"),
+  copyAll:$("copyAll"), clearAll:$("clearAll")
+};
+
+/* ---------- deck ---------- */
+function filtered(){ return QUESTIONS.filter(function(q){ return selected.size===0 || selected.has(q.t); }); }
+function renderCount(){
+  var f = filtered();
+  var n = f.filter(function(q){ return !seen.has(q.id); }).length;
+  el.left.textContent = n+" of "+f.length+" questions left in the deck";
+}
+function note(msg){ el.note.textContent = msg; }
+
+function renderChips(){
+  el.chips.textContent = "";
+  var all = document.createElement("button");
+  all.type="button"; all.className="chip"; all.textContent="All topics";
+  all.setAttribute("aria-pressed", String(selected.size===0));
+  all.addEventListener("click", function(){ selected.clear(); renderChips(); renderCount(); });
+  el.chips.appendChild(all);
+  TOPICS.forEach(function(t){
+    var b = document.createElement("button");
+    b.type="button"; b.className="chip"; b.textContent=t;
+    b.setAttribute("aria-pressed", String(selected.has(t)));
+    b.addEventListener("click", function(){
+      if(selected.has(t)) selected.delete(t); else selected.add(t);
+      renderChips(); renderCount();
+    });
+    el.chips.appendChild(b);
+  });
+}
+function renderSeg(){
+  el.seg.textContent = "";
+  TIMES.forEach(function(s){
+    var b = document.createElement("button");
+    b.type="button"; b.textContent=s+"s";
+    b.setAttribute("aria-pressed", String(s===total));
+    b.addEventListener("click", function(){ total=s; store.set("p3.time",s); renderSeg(); });
+    el.seg.appendChild(b);
+  });
+}
+
+function draw(){
+  var f = filtered();
+  var pool = f.filter(function(q){ return !seen.has(q.id); });
+  var reshuffled = false;
+  if(!pool.length){ f.forEach(function(q){ seen.delete(q.id); }); pool = f.slice(); reshuffled = true; }
+  if(pool.length>1 && current) pool = pool.filter(function(q){ return q.id!==current.id; });
+  var q = pool[Math.floor(Math.random()*pool.length)];
+  seen.add(q.id);
+  current = q;
+  openCard(q);
+  note(reshuffled ? "Every question in this set has been used, so the deck is shuffled again." : "");
+  renderCount();
+}
+
+/* ---------- card ---------- */
+function setStatus(msg, warn){ el.status.textContent = msg; el.status.classList.toggle("warn", !!warn); }
+function updateWC(){ var n = words(el.ans.value); el.wc.textContent = n+(n===1?" word":" words"); }
+function renderClock(){
+  el.clock.textContent = fmt(left);
+  el.fill.style.transform = "scaleX("+(total? left/total : 0)+")";
+  var low = running && left<=10;
+  el.clock.classList.toggle("low", low);
+  el.fill.classList.toggle("low", low);
+}
+
+function openCard(q){
+  el.qtopic.textContent = q.t;
+  el.qtext.textContent = q.q;
+  el.ans.value = "";
+  updateWC();
+  running = false; left = total;
+  el.speak.textContent = "Start speaking";
+  el.speak.classList.remove("rec");
+  renderClock();
+  setStatus("Press Start speaking and answer out loud for "+total+" seconds. Bấm nút rồi nói to câu trả lời.");
+  try{ el.dlg.showModal(); }catch(_){ el.dlg.setAttribute("open",""); }
+  el.speak.focus();
+}
+function cleanup(){
+  stopTimer(false, true);
+  try{ if("speechSynthesis" in window) window.speechSynthesis.cancel(); }catch(_){}
+}
+function closeCard(){
+  cleanup();
+  try{ if(el.dlg.open) el.dlg.close(); }catch(_){ el.dlg.removeAttribute("open"); }
+}
+
+/* ---------- timer + speech ---------- */
+function startTimer(){
+  running = true; left = total; endAt = Date.now()+total*1000;
+  el.speak.textContent = "Stop";
+  el.speak.classList.add("rec");
+  renderClock();
+  timerId = setInterval(function(){
+    left = Math.max(0, Math.ceil((endAt-Date.now())/1000));
+    renderClock();
+    if(left<=0) stopTimer(true);
+  }, 200);
+  startRec();
+}
+function stopTimer(timeUp, silent){
+  if(timerId){ clearInterval(timerId); timerId = null; }
+  var was = running;
+  running = false;
+  stopRec();
+  el.speak.classList.remove("rec");
+  el.speak.textContent = was ? "Speak again" : "Start speaking";
+  renderClock();
+  if(was && !silent){
+    setStatus(timeUp
+      ? "Time is up. Read your answer, fix any mistakes, then save. Hết giờ, đọc lại và sửa trước khi lưu."
+      : "Stopped. Edit your answer below, then save it.");
+  }
+}
+
+var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+var rec = null, want = false, base = "";
+function makeRec(){
+  rec = new SR();
+  rec.lang = "en-US";
+  rec.continuous = true;
+  rec.interimResults = true;
+  rec.onresult = function(e){
+    var t = "";
+    for(var i=0;i<e.results.length;i++) t += e.results[i][0].transcript;
+    el.ans.value = (base ? base+" " : "") + t.trim();
+    updateWC();
+  };
+  rec.onerror = function(e){
+    if(e.error==="not-allowed" || e.error==="service-not-allowed"){
+      want = false;
+      setStatus("The microphone is blocked. Speak out loud anyway, then type your answer. Micro đang bị chặn, hãy nói to rồi gõ lại câu trả lời.", true);
+    } else if(e.error==="audio-capture"){
+      want = false;
+      setStatus("No microphone found. Speak out loud, then type your answer.", true);
+    }
+  };
+  rec.onend = function(){
+    if(want && running){ base = el.ans.value.trim(); try{ makeRec(); }catch(_){} }
+  };
+  rec.start();
+}
+function startRec(){
+  if(!SR){
+    setStatus("Voice typing does not work in this browser (use Chrome or Edge). Speak out loud, then type your answer. Hãy nói to rồi gõ lại.");
+    return;
+  }
+  base = el.ans.value.trim();
+  want = true;
+  setStatus("Listening. Speak now.");
+  try{ makeRec(); }catch(_){ want = false; }
+}
+function stopRec(){
+  want = false;
+  try{ if(rec) rec.stop(); }catch(_){}
+}
+
+/* ---------- save + log ---------- */
+function save(){
+  var a = el.ans.value.trim();
+  if(!a){ setStatus("Speak or type something first. Hãy nói hoặc viết câu trả lời trước.", true); el.ans.focus(); return; }
+  log.push({id:Date.now(), t:current.t, q:current.q, a:a});
+  store.set("p3.log", log);
+  closeCard();
+  renderLog();
+  note("Saved. "+log.length+(log.length===1?" answer":" answers")+" so far. Draw another when you are ready.");
+}
+function renderLog(){
+  el.entries.textContent = "";
+  var has = log.length>0;
+  el.empty.hidden = has;
+  el.tools.hidden = !has;
+  log.forEach(function(e){
+    var li = document.createElement("li"); li.className = "entry";
+    var t = document.createElement("p"); t.className="topic"; t.textContent = e.t;
+    var q = document.createElement("p"); q.className="eq"; q.textContent = e.q;
+    var a = document.createElement("p"); a.className="ea"; a.textContent = e.a;
+    var foot = document.createElement("div"); foot.className="foot";
+    var n = words(e.a);
+    var w = document.createElement("span"); w.textContent = n+(n===1?" word":" words");
+    var rm = document.createElement("button"); rm.type="button"; rm.textContent="Remove";
+    rm.addEventListener("click", function(){
+      log = log.filter(function(x){ return x.id!==e.id; });
+      store.set("p3.log", log);
+      renderLog();
+    });
+    foot.appendChild(w); foot.appendChild(rm);
+    li.appendChild(t); li.appendChild(q); li.appendChild(a); li.appendChild(foot);
+    el.entries.appendChild(li);
+  });
+}
+function copyText(text){
+  return new Promise(function(resolve){
+    function fallback(){
+      try{
+        var ta = document.createElement("textarea");
+        ta.value = text; ta.setAttribute("readonly","");
+        ta.style.cssText = "position:fixed;top:0;left:0;opacity:0";
+        document.body.appendChild(ta); ta.select();
+        var ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        resolve(ok);
+      }catch(_){ resolve(false); }
+    }
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){ resolve(true); }, fallback);
+      } else fallback();
+    }catch(_){ fallback(); }
+  });
+}
+function flash(btn, msg){
+  var old = btn.dataset.label || btn.textContent;
+  btn.dataset.label = old;
+  btn.textContent = msg;
+  setTimeout(function(){ btn.textContent = old; }, 1600);
+}
+
+/* ---------- wiring ---------- */
+el.draw.addEventListener("click", draw);
+el.close.addEventListener("click", closeCard);
+el.dlg.addEventListener("close", cleanup);
+el.dlg.addEventListener("click", function(e){ if(e.target===el.dlg) closeCard(); });
+el.skip.addEventListener("click", function(){ closeCard(); draw(); });
+el.save.addEventListener("click", save);
+el.speak.addEventListener("click", function(){ if(running) stopTimer(false); else startTimer(); });
+el.ans.addEventListener("input", updateWC);
+el.ans.addEventListener("keydown", function(e){ if((e.ctrlKey||e.metaKey) && e.key==="Enter"){ e.preventDefault(); save(); } });
+
+STARTERS.forEach(function(s){
+  var b = document.createElement("button");
+  b.type="button"; b.textContent=s;
+  b.addEventListener("click", function(){
+    var v = el.ans.value;
+    el.ans.value = v + (v && !/\s$/.test(v) ? " " : "") + s + " ";
+    el.ans.focus();
+    el.ans.setSelectionRange(el.ans.value.length, el.ans.value.length);
+    updateWC();
+  });
+  el.starters.appendChild(b);
+});
+
+if(!("speechSynthesis" in window)) el.hear.hidden = true;
+el.hear.addEventListener("click", function(){
+  try{
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(current.q);
+    u.lang = "en-GB"; u.rate = 0.92;
+    window.speechSynthesis.speak(u);
+  }catch(_){}
+});
+
+el.name.value = studentName;
+el.name.addEventListener("input", function(){ studentName = el.name.value; store.set("p3.name", studentName); });
+
+el.copyAll.addEventListener("click", function(){
+  var lines = ["IELTS Speaking Part 3 answers"];
+  if(studentName.trim()) lines.push("Student: "+studentName.trim());
+  lines.push("Date: "+new Date().toLocaleDateString(), "");
+  log.forEach(function(e,i){
+    lines.push((i+1)+". ["+e.t+"] "+e.q, "Answer: "+e.a, "");
+  });
+  copyText(lines.join("\n")).then(function(ok){
+    flash(el.copyAll, ok ? "Copied" : "Copy failed, select the text instead");
+  });
+});
+var armed = false, armTimer = null;
+el.clearAll.addEventListener("click", function(){
+  if(!armed){
+    armed = true;
+    el.clearAll.textContent = "Click again to clear all";
+    armTimer = setTimeout(function(){ armed=false; el.clearAll.textContent="Clear all"; }, 3000);
+    return;
+  }
+  clearTimeout(armTimer); armed = false;
+  el.clearAll.textContent = "Clear all";
+  log = []; store.set("p3.log", log); renderLog();
+});
+
+renderChips(); renderSeg(); renderCount(); renderLog();
+})();
+</script>
+</body>
+</html>
