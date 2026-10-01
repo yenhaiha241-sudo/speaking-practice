@@ -92,6 +92,9 @@ dialog[open]{animation:pop .24s cubic-bezier(.2,.9,.3,1.12)}
 @media(max-width:560px){.timer{grid-template-columns:auto 1fr}.timer .btn{grid-column:1/-1}}
 .status{margin:0;min-height:1.6em;font-size:15px;color:var(--muted)}
 .status.warn{color:var(--alert)}
+.mic{margin:-8px 0 0;font-size:13px;color:var(--muted)}
+.mic.warn{color:var(--alert)}
+a.btn[hidden]{display:none}
 label.lab{font-weight:600;font-size:16px;display:block;margin-bottom:6px}
 textarea,input[type="text"]{width:100%;font:inherit;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px}
 textarea{min-height:150px;resize:vertical;line-height:1.5}
@@ -137,7 +140,7 @@ textarea:focus,input[type="text"]:focus{outline:none;border-color:var(--accent);
   <header>
     <h1>Part 3 question draw</h1>
     <p class="lede">Draw a random IELTS Speaking Part 3 question, answer it out loud, then write down what you said.</p>
-    <p class="lede vi" lang="vi">Bốc một câu hỏi Part 3 ngẫu nhiên, nói to câu trả lời, rồi viết lại những gì em đã nói.</p>
+    <p class="lede vi" lang="vi">Bốc một câu hỏi Part 3 ngẫu nhiên, nói to câu trả lời, rồi viết lại những gì em đã nói. Mỗi lần nói sẽ được ghi âm lại để em tải về và gửi cho giáo viên.</p>
   </header>
 
   <section class="stage">
@@ -201,6 +204,7 @@ textarea:focus,input[type="text"]:focus{outline:none;border-color:var(--accent);
       <button type="button" class="btn primary" id="speak">Start speaking</button>
     </div>
     <p class="status" id="status" role="status"></p>
+    <p class="mic" id="micStatus" role="status"></p>
     <div>
       <label class="lab" for="ans">Your answer</label>
       <textarea id="ans" placeholder="Your spoken words appear here, or type your answer."></textarea>
@@ -211,6 +215,7 @@ textarea:focus,input[type="text"]:focus{outline:none;border-color:var(--accent);
     </div>
     <div class="actions">
       <button type="button" class="btn ghost" id="skip">Skip question</button>
+      <a class="btn ghost" id="dlAudio" hidden download>Download recording</a>
       <button type="button" class="btn primary" id="save">Save answer</button>
     </div>
   </div>
@@ -371,6 +376,186 @@ var BANK = {
     "How does speaking a second language help in a career?",
     "Why do some people feel nervous when speaking a foreign language?",
     "Do you think minority languages should be protected?"
+  ],
+  "Advertising":[
+    "How do advertisements influence what people buy?",
+    "Do you think advertising aimed at children should be controlled?",
+    "What makes an advertisement memorable?",
+    "Why do companies spend so much money on advertising?",
+    "Do you think online advertising is more effective than TV advertising?",
+    "Should famous people be paid to advertise products?",
+    "How has advertising changed in the last twenty years?",
+    "Do you think people should be more critical of advertisements?"
+  ],
+  "Weather and climate":[
+    "How does the weather affect people's daily life in your country?",
+    "Do you think the climate is changing in your country?",
+    "What problems can extreme weather cause?",
+    "Do people in your country check the weather forecast often?",
+    "How does weather influence people's mood?",
+    "Should governments do more to prepare for natural disasters?",
+    "Do you think weather forecasting has become more accurate?",
+    "How might climate change affect future generations?"
+  ],
+  "Art and creativity":[
+    "Why do you think art is important to a society?",
+    "Should children be encouraged to study art at school?",
+    "Do you think everyone can be creative?",
+    "How has technology changed the way art is created?",
+    "Do you think modern art is as valuable as classical art?",
+    "Should governments fund art galleries and museums?",
+    "Why do some people find it difficult to appreciate art?",
+    "Do you think online platforms are good for artists to share their work?"
+  ],
+  "History":[
+    "Why do you think it is important to study history?",
+    "Do you think historical events are taught accurately in schools?",
+    "How can visiting historical sites help people understand the past?",
+    "Do you think modern technology helps us understand history better?",
+    "Why do some people find history boring?",
+    "Should historical buildings always be preserved?",
+    "What can people learn from the mistakes of the past?",
+    "Do you think young people are interested enough in history?"
+  ],
+  "Government and society":[
+    "What responsibilities should a government have towards its citizens?",
+    "Do you think citizens should be more involved in local decisions?",
+    "How can governments encourage people to follow the law?",
+    "Do you think young people should be more interested in politics?",
+    "What makes a country well governed?",
+    "Should the government provide free education for everyone?",
+    "How can governments reduce inequality in society?",
+    "Do you think people trust the government less than in the past?"
+  ],
+  "Celebrities and fame":[
+    "Why do you think people are interested in the lives of celebrities?",
+    "Do you think celebrities have a responsibility to set a good example?",
+    "How has social media changed the way people become famous?",
+    "Do you think fame brings more problems than benefits?",
+    "Why do some people want to become famous?",
+    "Do you think celebrities are paid too much money?",
+    "How do celebrities influence young people's behaviour?",
+    "Do you think fame will be easier or harder to achieve in the future?"
+  ],
+  "Economy and business":[
+    "What factors help a small business succeed?",
+    "Do you think it is better to work for a company or run your own business?",
+    "How does the economy affect ordinary people's daily lives?",
+    "Why do some businesses fail even with good products?",
+    "Do you think big companies have too much influence on society?",
+    "Should governments support small businesses more than large ones?",
+    "How has online business changed the way people shop and work?",
+    "Do you think young people today are more interested in starting a business?"
+  ],
+  "Crime and law":[
+    "Why do you think crime rates are higher in some areas than others?",
+    "Do you think punishment is the best way to reduce crime?",
+    "How can communities help prevent crime?",
+    "Do you think the media's focus on crime affects how safe people feel?",
+    "Should young offenders be treated differently from adult criminals?",
+    "How has technology helped or made it harder to solve crimes?",
+    "Do you think laws need to change as society changes?",
+    "Why do some people choose not to report minor crimes?"
+  ],
+  "Volunteering":[
+    "Why do people choose to do volunteer work?",
+    "Do you think schools should require students to volunteer?",
+    "What are the benefits of volunteering for the volunteer themselves?",
+    "Do you think companies should give employees time to volunteer?",
+    "How has the way people volunteer changed with technology?",
+    "Do you think governments should rely on volunteers for public services?",
+    "What kinds of volunteer work are most needed in your country?",
+    "Why do some people never consider volunteering?"
+  ],
+  "Globalisation":[
+    "How has globalisation changed the way people live?",
+    "Do you think globalisation benefits developing countries?",
+    "What are the disadvantages of globalisation for local businesses?",
+    "How has globalisation affected the food people eat?",
+    "Do you think languages are disappearing because of globalisation?",
+    "Should countries protect their own industries from foreign competition?",
+    "How has globalisation changed the way people find jobs?",
+    "Do you think the world will become more connected in the future?"
+  ],
+  "Parenting and raising children":[
+    "What do you think makes someone a good parent?",
+    "Do you think parenting styles have changed over the generations?",
+    "How much freedom should parents give their children?",
+    "Do you think it is harder to raise children today than in the past?",
+    "Should parents limit how much time children spend on screens?",
+    "How do working parents balance their job and family life?",
+    "Do you think grandparents should be involved in raising children?",
+    "What is the most important thing children should learn from their parents?"
+  ],
+  "Science and inventions":[
+    "What invention do you think has changed people's lives the most?",
+    "Do you think governments should invest more in scientific research?",
+    "How do new inventions affect the way people work?",
+    "Do you think all scientific discoveries should be shared publicly?",
+    "What qualities do you think a good scientist needs?",
+    "How has science changed the way people understand the world?",
+    "Do you think some inventions can be dangerous for society?",
+    "What invention would you like to see in the future?"
+  ],
+  "Social media":[
+    "How has social media changed the way people communicate?",
+    "Do you think social media has a positive or negative effect on society?",
+    "Why do some people spend a lot of time on social media?",
+    "Do you think children should be allowed to use social media?",
+    "How has social media changed the way news spreads?",
+    "Do you think people present a false image of themselves online?",
+    "Should social media companies be responsible for what is posted?",
+    "Do you think social media will be different in the future?"
+  ],
+  "Animals and wildlife":[
+    "Why do you think some people keep pets?",
+    "Do you think zoos are good places for animals?",
+    "How can governments help protect endangered animals?",
+    "Do you think wild animals should be allowed to live near cities?",
+    "What can people learn from studying animal behaviour?",
+    "Do you think animal testing for medicine is acceptable?",
+    "How has the number of wild animals changed in your country?",
+    "Do you think future generations will see fewer wild animals?"
+  ],
+  "Space exploration":[
+    "Do you think space exploration is a good use of money?",
+    "What benefits can space research bring to ordinary people?",
+    "Do you think humans will live on other planets in the future?",
+    "Should space exploration be led by governments or private companies?",
+    "Why are some people fascinated by space?",
+    "Do you think countries should work together more on space projects?",
+    "How has technology improved our understanding of space?",
+    "Would you like to travel to space if you had the chance?"
+  ],
+  "Equality and gender":[
+    "Do you think men and women are treated equally in the workplace?",
+    "How have attitudes towards gender roles changed in your country?",
+    "Do you think boys and girls should be raised differently?",
+    "What can schools do to promote equality between genders?",
+    "Do you think women face more challenges in certain careers?",
+    "How can governments help close the gap between rich and poor?",
+    "Do you think true equality is possible in society?",
+    "Why do you think inequality still exists in modern society?"
+  ],
+  "Happiness and wellbeing":[
+    "What do you think makes people happy?",
+    "Do you think money can buy happiness?",
+    "How does modern life affect people's mental wellbeing?",
+    "Do you think people today are less happy than in the past?",
+    "What can governments do to improve people's wellbeing?",
+    "Do you think a good work-life balance is important for happiness?",
+    "How do relationships with other people affect happiness?",
+    "Do you think happiness is something people can learn?"
+  ],
+  "Fashion":[
+    "Why do you think fashion trends change so quickly?",
+    "Do you think people spend too much money on clothes?",
+    "How does fashion influence the way people see themselves?",
+    "Do you think school uniforms are a good idea?",
+    "How has online shopping changed the fashion industry?",
+    "Do you think fashion companies should be more responsible about the environment?",
+    "Why do some people choose not to follow fashion trends?",
+    "Do you think fashion is more about self-expression or fitting in?"
   ]
 };
 var STARTERS = ["In my opinion,","The main reason is that","For example,","On the other hand,","Compared with the past,","In the future,"];
@@ -397,6 +582,8 @@ var selected = new Set();
 var seen = new Set();
 var current = null;
 var running = false, left = total, endAt = 0, timerId = null;
+var audioStore = {}; // entry id -> {url, name}  (session only, lost on reload)
+var mediaRecorder = null, mediaStream = null, audioChunks = [], lastAudioBlob = null, lastAudioMime = "";
 
 var el = {
   draw:$("draw"), left:$("left"), note:$("note"), chips:$("chips"), seg:$("seg"),
@@ -404,7 +591,8 @@ var el = {
   clock:$("clock"), fill:$("fill"), speak:$("speak"), status:$("status"),
   ans:$("ans"), starters:$("starters"), wc:$("wc"), skip:$("skip"), save:$("save"),
   name:$("name"), empty:$("empty"), tools:$("tools"), entries:$("entries"),
-  copyAll:$("copyAll"), clearAll:$("clearAll")
+  copyAll:$("copyAll"), clearAll:$("clearAll"),
+  micStatus:$("micStatus"), dlAudio:$("dlAudio")
 };
 
 /* ---------- deck ---------- */
@@ -480,11 +668,17 @@ function openCard(q){
   el.speak.classList.remove("rec");
   renderClock();
   setStatus("Press Start speaking and answer out loud for "+total+" seconds. Bấm nút rồi nói to câu trả lời.");
+  el.micStatus.textContent = "A recording of your voice is saved too \u2014 you can download it after you finish.";
+  el.micStatus.classList.remove("warn");
+  el.dlAudio.hidden = true;
+  el.dlAudio.removeAttribute("href");
+  lastAudioBlob = null;
   try{ el.dlg.showModal(); }catch(_){ el.dlg.setAttribute("open",""); }
   el.speak.focus();
 }
 function cleanup(){
   stopTimer(false, true);
+  stopAudioRec(true);
   try{ if("speechSynthesis" in window) window.speechSynthesis.cancel(); }catch(_){}
 }
 function closeCard(){
@@ -504,12 +698,14 @@ function startTimer(){
     if(left<=0) stopTimer(true);
   }, 200);
   startRec();
+  startAudioRec();
 }
 function stopTimer(timeUp, silent){
   if(timerId){ clearInterval(timerId); timerId = null; }
   var was = running;
   running = false;
   stopRec();
+  stopAudioRec(false);
   el.speak.classList.remove("rec");
   el.speak.textContent = was ? "Speak again" : "Start speaking";
   renderClock();
@@ -518,6 +714,59 @@ function stopTimer(timeUp, silent){
       ? "Time is up. Read your answer, fix any mistakes, then save. Hết giờ, đọc lại và sửa trước khi lưu."
       : "Stopped. Edit your answer below, then save it.");
   }
+}
+
+/* ---------- audio recording (saved as a file, separate from the text) ---------- */
+function pickMime(){
+  var cands = ["audio/webm;codecs=opus","audio/webm","audio/mp4","audio/ogg;codecs=opus"];
+  for(var i=0;i<cands.length;i++){
+    if(window.MediaRecorder && MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(cands[i])) return cands[i];
+  }
+  return "";
+}
+function startAudioRec(){
+  if(!navigator.mediaDevices || !window.MediaRecorder){
+    el.micStatus.textContent = "This browser can't save a sound file, but voice typing above may still work.";
+    el.micStatus.classList.add("warn");
+    return;
+  }
+  navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
+    mediaStream = stream;
+    audioChunks = [];
+    lastAudioMime = pickMime();
+    try{
+      mediaRecorder = lastAudioMime ? new MediaRecorder(stream,{mimeType:lastAudioMime}) : new MediaRecorder(stream);
+    }catch(_){ mediaRecorder = new MediaRecorder(stream); lastAudioMime = ""; }
+    mediaRecorder.ondataavailable = function(e){ if(e.data && e.data.size) audioChunks.push(e.data); };
+    mediaRecorder.onstop = function(){
+      if(audioChunks.length){
+        lastAudioBlob = new Blob(audioChunks, {type: lastAudioMime || "audio/webm"});
+        offerDownload(lastAudioBlob);
+      }
+      try{ mediaStream.getTracks().forEach(function(t){ t.stop(); }); }catch(_){}
+      mediaStream = null;
+    };
+    mediaRecorder.start();
+    el.micStatus.textContent = "Recording your voice as a sound file too.";
+    el.micStatus.classList.remove("warn");
+  }).catch(function(){
+    el.micStatus.textContent = "Microphone for the sound file was blocked. Voice typing above may still work. Micro ghi âm bị chặn, nhưng chuyển giọng nói thành chữ vẫn có thể hoạt động.";
+    el.micStatus.classList.add("warn");
+  });
+}
+function stopAudioRec(discard){
+  if(mediaRecorder && mediaRecorder.state!=="inactive"){
+    if(discard) mediaRecorder.onstop = function(){ try{ mediaStream.getTracks().forEach(function(t){ t.stop(); }); }catch(_){} mediaStream=null; };
+    try{ mediaRecorder.stop(); }catch(_){}
+  }
+  mediaRecorder = null;
+}
+function offerDownload(blob){
+  var url = URL.createObjectURL(blob);
+  var ext = (lastAudioMime||"").indexOf("mp4")>-1 ? "m4a" : "webm";
+  el.dlAudio.href = url;
+  el.dlAudio.download = "part3_"+(current?current.t.replace(/[^a-z0-9]+/gi,"_"):"answer")+"_"+Date.now()+"."+ext;
+  el.dlAudio.hidden = false;
 }
 
 var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -566,8 +815,12 @@ function stopRec(){
 function save(){
   var a = el.ans.value.trim();
   if(!a){ setStatus("Speak or type something first. Hãy nói hoặc viết câu trả lời trước.", true); el.ans.focus(); return; }
-  log.push({id:Date.now(), t:current.t, q:current.q, a:a});
+  var id = Date.now();
+  log.push({id:id, t:current.t, q:current.q, a:a, hasAudio: !!lastAudioBlob});
   store.set("p3.log", log);
+  if(lastAudioBlob){
+    audioStore[id] = {url: el.dlAudio.href, name: el.dlAudio.download};
+  }
   closeCard();
   renderLog();
   note("Saved. "+log.length+(log.length===1?" answer":" answers")+" so far. Draw another when you are ready.");
@@ -592,6 +845,15 @@ function renderLog(){
       renderLog();
     });
     foot.appendChild(w); foot.appendChild(rm);
+    if(audioStore[e.id]){
+      var dl = document.createElement("a");
+      dl.href = audioStore[e.id].url; dl.download = audioStore[e.id].name;
+      dl.textContent = "Download recording";
+      foot.appendChild(dl);
+    } else if(e.hasAudio){
+      var gone = document.createElement("span"); gone.textContent = "Recording was lost on reload";
+      foot.appendChild(gone);
+    }
     li.appendChild(t); li.appendChild(q); li.appendChild(a); li.appendChild(foot);
     el.entries.appendChild(li);
   });
