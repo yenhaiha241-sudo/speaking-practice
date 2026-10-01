@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IELTS Speaking Part 2 cue cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500..800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+  --bg:#EFEBE3; --surface:#FFFFFF; --ink:#16214A; --muted:#6C675C; --line:#DDD6C8; --soft:#F5F2EC;
+  --btn:#16214A; --btn-ink:#FFFFFF; --alert:#CF3A3F; --focus:#2F5BE0;
+  --signal:#FFC93C; --cue:#4B3FE0; --cue-ink:#FFFFFF;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#10152B; --surface:#1A2141; --ink:#F1ECE2; --muted:#A7A89F; --line:#2C3560; --soft:#141A36;
+    --btn:#F1ECE2; --btn-ink:#10152B; --alert:#FF7378; --focus:#9DB4FF;
+    --signal:#FFD25E; --cue:#7C8CFF; --cue-ink:#10152B;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#10152B; --surface:#1A2141; --ink:#F1ECE2; --muted:#A7A89F; --line:#2C3560; --soft:#141A36;
+  --btn:#F1ECE2; --btn-ink:#10152B; --alert:#FF7378; --focus:#9DB4FF;
+  --signal:#FFD25E; --cue:#7C8CFF; --cue-ink:#10152B;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+
+.wrap{max-width:1040px;margin:0 auto;padding:36px 20px 72px}
+h1{font-family:var(--serif);font-weight:750;font-size:clamp(34px,6vw,54px);line-height:1.04;letter-spacing:-.02em;margin:0 0 14px}
+h2{font-family:var(--serif);font-weight:700;font-size:26px;line-height:1.2;margin:0 0 12px}
+.lede{max-width:60ch;margin:0 0 4px;color:var(--muted)}
+
+.stage{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;margin-top:38px;align-items:start}
+@media(max-width:820px){.stage{grid-template-columns:1fr;gap:32px}}
+
+.deck{position:relative;margin:0 14px 18px 8px}
+.deck::before,.deck::after{content:"";position:absolute;inset:0;border-radius:26px;background:var(--soft);border:1.5px solid var(--line)}
+.deck::before{transform:translate(12px,14px) rotate(2.2deg)}
+.deck::after{transform:translate(-7px,8px) rotate(-1.6deg)}
+.draw{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:space-between;gap:36px;width:100%;min-height:300px;text-align:left;background:var(--cue);color:var(--cue-ink);border:0;border-radius:26px;padding:28px;cursor:pointer;transition:transform .16s ease}
+.draw:hover{transform:translateY(-4px) rotate(-.5deg)}
+.draw:focus-visible{outline-color:var(--signal);outline-offset:4px}
+.draw .mark{font-family:var(--serif);font-weight:800;font-size:112px;line-height:.75;color:var(--signal)}
+.draw .big{display:block;font-family:var(--serif);font-weight:750;font-size:clamp(30px,5vw,42px);line-height:1.02;letter-spacing:-.02em}
+.draw .sub{display:block;margin-top:8px;font-size:16px;opacity:.92}
+.note{min-height:1.6em;margin:34px 0 0;color:var(--muted);font-size:16px}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-size:15px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.hint{margin:10px 0 0;color:var(--muted);font-size:15px}
+.structure p{margin:0;color:var(--muted);font-size:15px}
+
+/* dialog */
+dialog{--c:#4B3FE0;border:0;padding:0;border-radius:24px;width:min(700px,calc(100% - 24px));max-height:calc(100% - 24px);overflow:auto;background:var(--surface);color:var(--ink);box-shadow:0 30px 80px rgba(6,10,30,.45)}
+dialog::backdrop{background:rgba(12,16,36,.6)}
+dialog[open]{animation:pop .24s cubic-bezier(.2,.9,.3,1.12)}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.94)}to{opacity:1;transform:none}}
+.cue{border-top:9px solid var(--c);background:color-mix(in srgb,var(--c) 13%,var(--surface));padding:18px 24px 26px}
+.cue-top{display:flex;align-items:center;gap:12px}
+.cue-top .who{margin-right:auto;line-height:1.25}
+.cue-top .who span{font-size:14px;color:var(--muted)}
+.cue button{background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:4px 14px;font-size:14px;cursor:pointer}
+.cue button.x{width:36px;height:36px;padding:0;font-size:22px;line-height:1}
+.qtitle{font-family:var(--serif);font-weight:700;font-size:clamp(24px,4.4vw,32px);line-height:1.16;letter-spacing:-.01em;margin:20px 0 0}
+.bullets{margin:16px 0 0;padding-left:22px}
+.bullets li{margin:6px 0}
+.stagewrap{padding:22px 24px 24px;display:grid;gap:16px}
+.stagehead{display:flex;align-items:center;gap:10px}
+.pill{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--c);background:color-mix(in srgb,var(--c) 16%,transparent);border-radius:999px;padding:4px 12px}
+.timer{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center}
+.clock{font-family:var(--serif);font-weight:700;font-size:36px;line-height:1;font-variant-numeric:tabular-nums;min-width:2.8ch}
+.clock.low{color:var(--alert)}
+.bar2{height:10px;border-radius:999px;background:var(--soft);border:1px solid var(--line);overflow:hidden}
+.bar2 i{display:block;height:100%;background:var(--c);transform-origin:left center;transition:transform .25s linear}
+.bar2 i.low{background:var(--alert)}
+@media(max-width:560px){.timer{grid-template-columns:auto 1fr}.timer .btn{grid-column:1/-1}}
+.status{margin:0;min-height:1.6em;font-size:15px;color:var(--muted)}
+.status.warn{color:var(--alert)}
+.mic{margin:-8px 0 0;font-size:13px;color:var(--muted)}
+.mic.warn{color:var(--alert)}
+a.btn[hidden]{display:none}
+label.lab{font-weight:600;display:block;margin-bottom:2px}
+.tip{margin:0 0 8px;font-size:14px;color:var(--muted)}
+textarea{width:100%;font:inherit;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;line-height:1.5;resize:vertical}
+textarea:focus{outline:none;border-color:var(--focus);box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 25%,transparent)}
+#notes{min-height:90px}
+#ans{min-height:150px}
+.meta{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+#wc{font-size:14px;color:var(--muted);white-space:nowrap;padding-top:5px}
+.actions{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.actions .right{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:1.5px solid transparent;border-radius:999px;padding:10px 22px;font-weight:600;cursor:pointer}
+.btn.primary{background:var(--btn);color:var(--btn-ink)}
+.btn.line{background:transparent;border-color:var(--ink)}
+.btn.ghost{background:transparent;border-color:var(--line)}
+.btn.rec{background:var(--alert);color:#fff}
+.btn:hover{filter:brightness(1.08)}
+input[type="text"]{width:100%;font:inherit;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px}
+input[type="text"]:focus{outline:none;border-color:var(--focus);box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 25%,transparent)}
+
+/* answers */
+.log{margin-top:60px;border-top:1.5px solid var(--line);padding-top:28px}
+.log-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px}
+.namebox{max-width:280px;width:100%}
+.namebox label{font-size:14px;color:var(--muted);display:block;margin-bottom:4px}
+.empty{color:var(--muted);max-width:56ch;margin:16px 0 0}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 6px}
+.tools .btn{padding:8px 18px;font-size:15px}
+.entries{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:16px}
+.entry{background:var(--surface);border:1px solid var(--line);border-left:7px solid var(--c);border-radius:16px;padding:16px 20px}
+.entry .topic{font-size:14px;color:var(--muted);margin:0 0 4px}
+.entry .eq{font-family:var(--serif);font-weight:650;font-size:19px;line-height:1.25;margin:0 0 6px}
+.entry .en{margin:0 0 8px;font-size:14px;color:var(--muted);white-space:pre-wrap}
+.entry .ea{margin:0;max-width:68ch;white-space:pre-wrap}
+.entry .foot{display:flex;align-items:center;gap:14px;margin-top:10px;font-size:14px;color:var(--muted)}
+.entry .foot button{background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;color:var(--muted)}
+
+@media(prefers-reduced-motion:reduce){
+  dialog[open]{animation:none}
+  .draw,.bar2 i{transition:none}
+  .draw:hover{transform:none}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <h1>IELTS Speaking Part 2</h1>
+    <p class="lede">Draw a cue card. Plan for 1 minute, then speak for up to 2 minutes.</p>
+    <p class="lede" lang="vi">Bốc một cue card, chuẩn bị trong 1 phút, rồi nói liên tục trong tối đa 2 phút. Phần nói sẽ được ghi âm lại để em tải về và gửi cho giáo viên.</p>
+  </header>
+
+  <section class="stage">
+    <div>
+      <div class="deck">
+        <button class="draw" id="draw" type="button">
+          <span class="mark" aria-hidden="true">?</span>
+          <span>
+            <span class="big">Draw a cue card</span>
+            <span class="sub" id="left"></span>
+          </span>
+        </button>
+      </div>
+      <p class="note" id="note" role="status"></p>
+    </div>
+
+    <div>
+      <h2>Topics</h2>
+      <div class="chips" id="chips"></div>
+      <p class="hint">Pick one or more topics, or leave "All topics" on. Chọn chủ đề hoặc để tất cả.</p>
+
+      <div class="structure" style="margin-top:28px">
+        <h2>Structure</h2>
+        <p>1 minute to prepare with notes, then speak for up to 2 minutes. Cấu trúc cố định: 1 phút chuẩn bị, 2 phút nói — đồng hồ tự chạy.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="log" aria-labelledby="loghead">
+    <div class="log-head">
+      <h2 id="loghead">Your answers</h2>
+      <div class="namebox">
+        <label for="name">Your name (added when you copy)</label>
+        <input id="name" type="text" maxlength="60" autocomplete="name" placeholder="Nguyen Van A">
+      </div>
+    </div>
+    <p class="empty" id="empty">No answers yet. Draw a cue card, speak, then save your answer and it will appear here.</p>
+    <div class="tools" id="tools" hidden>
+      <button class="btn primary" id="copyAll" type="button">Copy all answers</button>
+      <button class="btn ghost" id="clearAll" type="button">Clear all</button>
+    </div>
+    <ul class="entries" id="entries"></ul>
+  </section>
+</main>
+
+<dialog id="dlg" aria-labelledby="qtitle">
+  <div class="cue">
+    <div class="cue-top">
+      <div class="who"><span id="qcat"></span></div>
+      <button type="button" id="hear">Hear it</button>
+      <button type="button" class="x" id="close" aria-label="Close">&times;</button>
+    </div>
+    <p class="qtitle" id="qtitle"></p>
+    <ul class="bullets" id="bullets"></ul>
+  </div>
+  <div class="stagewrap">
+    <div class="stagehead">
+      <span class="pill" id="stagepill">Prepare</span>
+    </div>
+    <div class="timer">
+      <div class="clock" id="clock">1:00</div>
+      <div class="bar2" aria-hidden="true"><i id="fill"></i></div>
+      <button type="button" class="btn primary" id="go">Start preparing</button>
+    </div>
+    <p class="status" id="status" role="status"></p>
+    <p class="mic" id="micStatus" role="status"></p>
+
+    <div id="notesWrap">
+      <label class="lab" for="notes">Notes (optional)</label>
+      <p class="tip">Jot a few words for each bullet point while you prepare.</p>
+      <textarea id="notes" placeholder="Quick notes for each point..."></textarea>
+    </div>
+
+    <div id="ansWrap" hidden>
+      <label class="lab" for="ans">Your answer</label>
+      <p class="tip">This fills in as you speak (Chrome/Edge). You can edit it after you finish.</p>
+      <textarea id="ans" placeholder="Your spoken words appear here, or type your answer."></textarea>
+      <div class="meta">
+        <span></span>
+        <span id="wc">0 words</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn ghost" id="skip">Different cue card</button>
+      <a class="btn ghost" id="dlAudio" hidden download>Download recording</a>
+      <div class="right">
+        <button type="button" class="btn line" id="saveClose" hidden>Save and close</button>
+        <button type="button" class="btn primary" id="saveNext" hidden>Save and next</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- data ---------- */
+var CATS = {
+  person:{label:"Person", vi:"Con người", em:"🧑", c:"#B5673A"},
+  object:{label:"Object", vi:"Vật dụng", em:"📦", c:"#4172B0"},
+  place:{label:"Place", vi:"Địa điểm", em:"📍", c:"#7F975C"},
+  experience:{label:"Experience", vi:"Trải nghiệm", em:"🌟", c:"#8B5CB8"},
+  home:{label:"Home & Accommodation", vi:"Nhà ở, nơi sống", em:"🏠", c:"#C2574B"},
+  family:{label:"Family & Friends", vi:"Gia đình, bạn bè", em:"👨‍👩‍👧", c:"#B08A2E"},
+  study:{label:"Study & Education", vi:"Học tập, trường học", em:"🎓", c:"#5B6FD6"},
+  work:{label:"Work & Career", vi:"Công việc, nghề nghiệp", em:"💼", c:"#4F8B6B"},
+  food:{label:"Food & Cooking", vi:"Đồ ăn, nấu ăn", em:"🍜", c:"#A3763B"},
+  sports:{label:"Sports & Exercise", vi:"Thể thao, tập luyện", em:"🏃", c:"#3E8F8F"},
+  music:{label:"Music", vi:"Âm nhạc", em:"🎵", c:"#9B4F96"},
+  films:{label:"Films & TV", vi:"Phim ảnh, chương trình TV", em:"🎬", c:"#6B8E4E"},
+  tech:{label:"Technology & Social Media", vi:"Công nghệ, mạng xã hội", em:"📱", c:"#5C7AA0"},
+  shopping:{label:"Shopping & Money", vi:"Mua sắm, tiền bạc", em:"🛍️", c:"#B5673A"},
+  travel:{label:"Travel & Holidays", vi:"Du lịch, kỳ nghỉ", em:"✈️", c:"#4172B0"},
+  nature:{label:"Nature & Environment", vi:"Thiên nhiên, môi trường", em:"🌳", c:"#7F975C"},
+  books:{label:"Books & Reading", vi:"Sách, đọc sách", em:"📚", c:"#8B5CB8"},
+  art:{label:"Art & Culture", vi:"Nghệ thuật, văn hóa", em:"🎨", c:"#C2574B"},
+  transport:{label:"Transport & Cities", vi:"Giao thông, thành phố", em:"🚦", c:"#B08A2E"}
+};
+var CARDS = [
+  {n:"a person you admire", c:"person", b:["who this person is","how you know this person","what this person is like","and explain why you admire this person"]},
+  {n:"a teacher who has influenced you", c:"person", b:["who this teacher was","what subject they taught","what was special about their teaching","and explain how they influenced you"]},
+  {n:"a friend you have known for a long time", c:"person", b:["who this friend is","how you met","what you usually do together","and explain why your friendship has lasted so long"]},
+  {n:"a family member you are close to", c:"person", b:["who this person is","how often you see them","what you like to do together","and explain why you are close to this person"]},
+  {n:"someone who helped you achieve a goal", c:"person", b:["who this person is","what goal you achieved","how they helped you","and explain how you felt about their help"]},
+  {n:"a person who is good at their job", c:"person", b:["who this person is","what their job is","how you know they are good at it","and explain why you think they do their job well"]},
+  {n:"a famous person you would like to meet", c:"person", b:["who this person is","what they are famous for","what you know about them","and explain why you would like to meet them"]},
+  {n:"a person who often gives you advice", c:"person", b:["who this person is","what kind of advice they give","when they usually give you advice","and explain how their advice has helped you"]},
+
+  {n:"an object that is important to you", c:"object", b:["what the object is","where you got it","how long you have had it","and explain why it is important to you"]},
+  {n:"a piece of technology you find useful", c:"object", b:["what the item is","how you use it","how long you have had it","and explain why you find it useful"]},
+  {n:"a gift you received that you liked", c:"object", b:["what the gift was","who gave it to you","when you received it","and explain why you liked this gift"]},
+  {n:"a piece of clothing you like to wear", c:"object", b:["what it is","where you got it","when you usually wear it","and explain why you like it"]},
+  {n:"a book that had an important influence on you", c:"object", b:["what the book was","what it was about","when you read it","and explain how it influenced you"]},
+  {n:"a photograph that means a lot to you", c:"object", b:["what the photograph shows","when it was taken","who took it","and explain why it means a lot to you"]},
+  {n:"an item you bought that made you happy", c:"object", b:["what you bought","where you bought it","why you decided to buy it","and explain why it made you happy"]},
+  {n:"a toy you had when you were a child", c:"object", b:["what the toy was","how you got it","how you used to play with it","and explain why you remember this toy"]},
+
+  {n:"a place you like to relax", c:"place", b:["where this place is","how often you go there","what you do there","and explain why you find this place relaxing"]},
+  {n:"a place you visited that had beautiful scenery", c:"place", b:["where this place is","when you visited it","what the scenery was like","and explain how you felt about the scenery"]},
+  {n:"a café or restaurant you enjoy going to", c:"place", b:["where it is","how you found out about it","what you usually order there","and explain why you enjoy going there"]},
+  {n:"a city you would like to visit", c:"place", b:["what city this is","where it is","what you know about it","and explain why you would like to visit it"]},
+  {n:"a quiet place you like to go", c:"place", b:["where this place is","how you discovered it","how often you go there","and explain why you find it a quiet place"]},
+  {n:"a place near water you have visited", c:"place", b:["where this place is","when you visited it","what you did there","and explain how you felt about the place"]},
+  {n:"a shop you often go to", c:"place", b:["where the shop is","what it sells","how often you go there","and explain why you like this shop"]},
+  {n:"a room in your home that you like", c:"place", b:["which room this is","what is in this room","what you usually do there","and explain why you like this room"]},
+
+  {n:"a sport you would like to try", c:"experience", b:["what the sport is","where people usually play it","what equipment is needed","and explain why you would like to try it"]},
+  {n:"an outdoor activity you enjoy", c:"experience", b:["what the activity is","where you usually do it","who you do it with","and explain why you enjoy this activity"]},
+  {n:"a skill that was difficult for you to learn", c:"experience", b:["what the skill was","when you learned it","how you learned it","and explain why it was difficult"]},
+  {n:"a memorable journey you have taken", c:"experience", b:["where you went","how you travelled","who you went with","and explain why this journey was memorable"]},
+  {n:"a time you helped someone", c:"experience", b:["who you helped","what the situation was","how you helped them","and explain how you felt afterwards"]},
+  {n:"an important decision you made", c:"experience", b:["what the decision was","when you made it","what other choices you had","and explain why this decision was important"]},
+  {n:"an event you celebrated with other people", c:"experience", b:["what the event was","when it happened","who you celebrated with","and explain why the event was special"]},
+  {n:"a time when you were very busy", c:"experience", b:["when this was","what you had to do","how you managed your time","and explain how you felt during that time"]},
+
+  {n:"the home you live in", c:"home", b:["what it looks like","how many rooms it has","how long you have lived there","and explain what you like most about it"]},
+  {n:"a room you would like to add to your home", c:"home", b:["what room this would be","why you want it","what you would use it for","and explain why it would improve your home"]},
+  {n:"a home you would like to live in in the future", c:"home", b:["what kind of home it is","where it would be","what it would look like","and explain why you would like to live there"]},
+
+  {n:"a family tradition you have", c:"family", b:["what the tradition is","when your family does it","who takes part in it","and explain why this tradition is important to your family"]},
+  {n:"a relative you don't see very often", c:"family", b:["who this person is","how you are related","when you last saw them","and explain why you don't see them often"]},
+  {n:"a time your family celebrated something together", c:"family", b:["what you celebrated","who was there","what you did","and explain why it was a happy occasion"]},
+
+  {n:"a subject you enjoyed studying at school", c:"study", b:["what the subject was","who taught it","why you chose it, or had to study it","and explain why you enjoyed it"]},
+  {n:"a skill you learned at school that you still use", c:"study", b:["what the skill was","when you learned it","how you use it now","and explain why it has been useful"]},
+  {n:"a course you have taken", c:"study", b:["what the course was about","where you studied it","how long it lasted","and explain why you took this course"]},
+
+  {n:"a job you would like to have in the future", c:"work", b:["what the job is","what skills it needs","where you could do this job","and explain why you would like to do it"]},
+  {n:"a time you worked hard to achieve something", c:"work", b:["what you were trying to achieve","how long it took","what difficulties you faced","and explain how you felt when you finished"]},
+  {n:"a part-time job you have had, or would like to have", c:"work", b:["what the job is or was","what the duties are","where it would take place","and explain why you would choose, or chose, this job"]},
+
+  {n:"a traditional dish from your country", c:"food", b:["what the dish is","what ingredients it has","when people usually eat it","and explain why it is popular"]},
+  {n:"a time you cooked a meal for someone", c:"food", b:["what you cooked","who it was for","how you prepared it","and explain how it turned out"]},
+  {n:"a restaurant where you had a memorable meal", c:"food", b:["where the restaurant is","who you went with","what you ate","and explain why the meal was memorable"]},
+
+  {n:"a sports event you watched", c:"sports", b:["what the event was","where and when it took place","who was playing","and explain why you enjoyed watching it"]},
+  {n:"a time you exercised to improve your health", c:"sports", b:["what exercise you did","when this was","how often you did it","and explain how it helped your health"]},
+  {n:"a sport you used to play but no longer play", c:"sports", b:["what the sport was","when you used to play it","who you played with","and explain why you stopped playing it"]},
+
+  {n:"a song or piece of music you like", c:"music", b:["what the song or music is","who performs it","when you first heard it","and explain why you like it"]},
+  {n:"a music concert you attended, or would like to attend", c:"music", b:["what the concert is or was","who performed, or would perform","where it took, or would take, place","and explain why you wanted to go"]},
+  {n:"a musical instrument you would like to learn", c:"music", b:["what instrument this is","why you have not learned it yet","how you would learn it","and explain why you want to learn it"]},
+
+  {n:"a TV programme you enjoy watching", c:"films", b:["what the programme is about","how often it is shown","who you usually watch it with","and explain why you enjoy it"]},
+  {n:"an actor or actress you admire", c:"films", b:["who this person is","what films or shows they are in","how you first saw them","and explain why you admire them"]},
+  {n:"a film that made a strong impression on you", c:"films", b:["what the film was about","when you watched it","who you watched it with","and explain why it impressed you"]},
+
+  {n:"an app you use often", c:"tech", b:["what the app is","what it is used for","how often you use it","and explain why you find it useful"]},
+  {n:"a piece of technology you would like to own", c:"tech", b:["what the technology is","what it can do","how much it costs","and explain why you want it"]},
+  {n:"a time social media helped you", c:"tech", b:["what the situation was","which platform you used","how it helped you","and explain how you felt about it"]},
+
+  {n:"a shop you often go to", c:"shopping", b:["where the shop is","what it sells","how often you go there","and explain why you like this shop"]},
+  {n:"a time you saved money to buy something", c:"shopping", b:["what you saved for","how long it took","how you saved the money","and explain how you felt when you bought it"]},
+  {n:"something you bought that you later regretted", c:"shopping", b:["what you bought","why you bought it","when this happened","and explain why you regretted it"]},
+
+  {n:"a city you would like to visit", c:"travel", b:["what city this is","where it is","what you know about it","and explain why you would like to visit it"]},
+  {n:"a holiday you really enjoyed", c:"travel", b:["where you went","who you went with","what you did there","and explain why you enjoyed it"]},
+  {n:"a trip you had to plan carefully", c:"travel", b:["where you went","what you had to prepare","who helped you plan it","and explain why careful planning was needed"]},
+
+  {n:"something you do to protect the environment", c:"nature", b:["what you do","when you started doing it","how often you do it","and explain why you think it is important"]},
+  {n:"an animal you find interesting", c:"nature", b:["what animal this is","where this animal lives","what it looks like","and explain why you find it interesting"]},
+  {n:"a natural place you would like to visit", c:"nature", b:["where this place is","what it is like","how you found out about it","and explain why you would like to visit it"]},
+
+  {n:"a book that you found interesting", c:"books", b:["what the book was about","who wrote it","when you read it","and explain why you found it interesting"]},
+  {n:"a story someone told you", c:"books", b:["who told you the story","what the story was about","when they told you","and explain why you remember it"]},
+  {n:"a magazine or newspaper you like to read", c:"books", b:["what it is called","what kind of articles it has","how often you read it","and explain why you like it"]},
+
+  {n:"a traditional festival in your country", c:"art", b:["what the festival is","when it takes place","what people do during it","and explain why this festival is important"]},
+  {n:"a piece of art you like", c:"art", b:["what the artwork is","who created it","where you saw it","and explain why you like it"]},
+  {n:"a cultural event you attended", c:"art", b:["what the event was","where it took place","what happened there","and explain why you enjoyed it"]},
+
+  {n:"a form of transport you often use", c:"transport", b:["what the transport is","how often you use it","where you usually go","and explain why you choose this transport"]},
+  {n:"a city you have visited that you liked", c:"transport", b:["what city this is","when you visited it","what you did there","and explain why you liked it"]},
+  {n:"a journey that took longer than expected", c:"transport", b:["where you were going","why it took longer","how you felt during the journey","and explain what you learned from it"]}
+];
+
+/* ---------- helpers ---------- */
+function $(id){ return document.getElementById(id); }
+var store = {
+  get:function(k,def){ try{ var v=localStorage.getItem(k); return v===null?def:JSON.parse(v); }catch(_){ return def; } },
+  set:function(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(_){} }
+};
+function fmt(s){ return Math.floor(s/60)+":"+String(s%60).padStart(2,"0"); }
+function words(s){ return s.trim().split(/\s+/).filter(Boolean).length; }
+
+var PREP = 60, SPEAK = 120;
+
+/* ---------- state ---------- */
+var log = store.get("p2.log",[]); if(!Array.isArray(log)) log = [];
+var studentName = store.get("p2.name",""); if(typeof studentName!=="string") studentName = "";
+var selected = new Set();
+var seen = new Set();
+var current = null;
+var stage = "prep";
+var running = false, left = PREP, total = PREP, endAt = 0, timerId = null;
+var audioStore = {}; // entry id -> {url, name}  (session only, lost on reload)
+var mediaRecorder = null, mediaStream = null, audioChunks = [], lastAudioBlob = null, lastAudioMime = "";
+
+var el = {
+  draw:$("draw"), left:$("left"), note:$("note"), chips:$("chips"),
+  dlg:$("dlg"), qcat:$("qcat"), qtitle:$("qtitle"), bullets:$("bullets"),
+  hear:$("hear"), close:$("close"), stagepill:$("stagepill"),
+  clock:$("clock"), fill:$("fill"), go:$("go"), status:$("status"),
+  notesWrap:$("notesWrap"), notes:$("notes"), ansWrap:$("ansWrap"), ans:$("ans"), wc:$("wc"),
+  skip:$("skip"), saveClose:$("saveClose"), saveNext:$("saveNext"),
+  name:$("name"), empty:$("empty"), tools:$("tools"), entries:$("entries"),
+  copyAll:$("copyAll"), clearAll:$("clearAll"),
+  micStatus:$("micStatus"), dlAudio:$("dlAudio")
+};
+function note(msg){ el.note.textContent = msg; }
+
+/* ---------- deck + chips ---------- */
+function filtered(){ return CARDS.map(function(c,i){return i;}).filter(function(i){ return selected.size===0 || selected.has(CARDS[i].c); }); }
+function renderCount(){
+  var f = filtered();
+  var n = f.filter(function(i){ return !seen.has(i); }).length;
+  el.left.textContent = n+" of "+f.length+" cue cards left in the deck";
+}
+function renderChips(){
+  el.chips.textContent = "";
+  var all = document.createElement("button");
+  all.type="button"; all.className="chip"; all.textContent="All topics";
+  all.setAttribute("aria-pressed", String(selected.size===0));
+  all.addEventListener("click", function(){ selected.clear(); renderChips(); renderCount(); });
+  el.chips.appendChild(all);
+  Object.keys(CATS).forEach(function(key){
+    var cat = CATS[key];
+    var b = document.createElement("button");
+    b.type="button"; b.className="chip"; b.textContent=cat.em+" "+cat.label;
+    b.setAttribute("aria-pressed", String(selected.has(key)));
+    b.addEventListener("click", function(){
+      if(selected.has(key)) selected.delete(key); else selected.add(key);
+      renderChips(); renderCount();
+    });
+    el.chips.appendChild(b);
+  });
+}
+
+/* ---------- drawing ---------- */
+function draw(){
+  var f = filtered();
+  var fresh = f.filter(function(i){ return !seen.has(i); });
+  var reshuffled = false;
+  if(!fresh.length){ f.forEach(function(i){ seen.delete(i); }); fresh = f.slice(); reshuffled = true; }
+  if(fresh.length>1 && current!==null) fresh = fresh.filter(function(i){ return i!==current; });
+  var idx = fresh[Math.floor(Math.random()*fresh.length)];
+  seen.add(idx);
+  current = idx;
+  open(idx);
+  note(reshuffled ? "You have seen every cue card here, so the set is shuffled again." : "");
+  renderCount();
+}
+
+/* ---------- card / stages ---------- */
+function open(idx){
+  var card = CARDS[idx];
+  var cat = CATS[card.c];
+  el.dlg.style.setProperty("--c", cat.c);
+  el.qcat.textContent = cat.em+" "+cat.label+" · "+cat.vi;
+  el.qtitle.textContent = "Describe "+card.n;
+  el.bullets.textContent = "";
+  card.b.forEach(function(line){
+    var li = document.createElement("li"); li.textContent = line;
+    el.bullets.appendChild(li);
+  });
+  el.notes.value = "";
+  el.ans.value = "";
+  updateWC();
+  el.micStatus.textContent = "";
+  el.micStatus.classList.remove("warn");
+  el.dlAudio.hidden = true;
+  el.dlAudio.removeAttribute("href");
+  lastAudioBlob = null;
+  enterPrep();
+  if(!el.dlg.open){
+    try{ el.dlg.showModal(); }catch(_){ el.dlg.setAttribute("open",""); }
+  }
+  el.go.focus();
+}
+function enterPrep(){
+  stage = "prep"; running = false; total = PREP; left = PREP;
+  el.stagepill.textContent = "Prepare";
+  el.notesWrap.hidden = false;
+  el.ansWrap.hidden = true;
+  el.saveClose.hidden = true; el.saveNext.hidden = true;
+  el.go.textContent = "Start preparing";
+  el.go.classList.remove("rec");
+  renderClock();
+  setStatus("You have 1 minute to plan. Use the notes box for a few words on each point. Em có 1 phút để chuẩn bị, ghi vài từ gợi ý cho mỗi ý.");
+}
+function enterSpeak(){
+  stage = "speak"; running = false; total = SPEAK; left = SPEAK;
+  el.stagepill.textContent = "Speak";
+  el.notesWrap.hidden = true;
+  el.ansWrap.hidden = false;
+  el.saveClose.hidden = false; el.saveNext.hidden = false;
+  el.go.textContent = "Start speaking";
+  el.go.classList.remove("rec");
+  renderClock();
+  setStatus("Speak for up to 2 minutes, covering all the bullet points. Nói liên tục trong tối đa 2 phút, nhắc đủ các ý gợi ý.");
+  el.go.focus();
+}
+function cleanup(){
+  stopTimer(false, true);
+  stopAudioRec(true);
+  try{ if("speechSynthesis" in window) window.speechSynthesis.cancel(); }catch(_){}
+}
+function closeCard(){
+  cleanup();
+  try{ if(el.dlg.open) el.dlg.close(); }catch(_){ el.dlg.removeAttribute("open"); }
+}
+
+/* ---------- timer + speech ---------- */
+function setStatus(msg, warn){ el.status.textContent = msg; el.status.classList.toggle("warn", !!warn); }
+function updateWC(){ var n = words(el.ans.value); el.wc.textContent = n+(n===1?" word":" words"); }
+function renderClock(){
+  el.clock.textContent = fmt(left);
+  el.fill.style.transform = "scaleX("+(total? left/total : 0)+")";
+  var low = running && left<=10;
+  el.clock.classList.toggle("low", low);
+  el.fill.classList.toggle("low", low);
+}
+function startTimer(){
+  running = true; left = total; endAt = Date.now()+total*1000;
+  el.go.textContent = stage==="speak" ? "Stop" : "Skip to speaking";
+  if(stage==="speak") el.go.classList.add("rec");
+  renderClock();
+  timerId = setInterval(function(){
+    left = Math.max(0, Math.ceil((endAt-Date.now())/1000));
+    renderClock();
+    if(left<=0) onTimeUp();
+  }, 200);
+  if(stage==="speak"){ startRec(); startAudioRec(); }
+}
+function onTimeUp(){
+  if(timerId){ clearInterval(timerId); timerId = null; }
+  running = false;
+  if(stage==="prep"){
+    setStatus("Time is up. Now speak for up to 2 minutes. Hết giờ chuẩn bị, bắt đầu nói.");
+    enterSpeak();
+  } else {
+    stopRec();
+    stopAudioRec(false);
+    el.go.classList.remove("rec");
+    el.go.textContent = "Speak again";
+    setStatus("Time is up. Read your answer, fix any mistakes, then save. Hết giờ, đọc lại và sửa trước khi lưu.");
+  }
+}
+function stopTimer(manual, silent){
+  if(timerId){ clearInterval(timerId); timerId = null; }
+  var was = running;
+  running = false;
+  stopRec();
+  if(stage==="speak") stopAudioRec(false);
+  el.go.classList.remove("rec");
+  if(!silent && was){
+    if(stage==="prep"){
+      el.go.textContent = "Start preparing";
+      setStatus("Paused. Press Skip to speaking when you are ready, or keep planning.");
+    } else {
+      el.go.textContent = "Speak again";
+      setStatus("Stopped. Edit your answer below, then save it.");
+    }
+  } else if(!was){
+    el.go.textContent = stage==="prep" ? "Start preparing" : "Start speaking";
+  }
+  renderClock();
+}
+var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+var rec = null, want = false, base = "";
+function makeRec(){
+  rec = new SR();
+  rec.lang = "en-US";
+  rec.continuous = true;
+  rec.interimResults = true;
+  rec.onresult = function(e){
+    var t = "";
+    for(var i=0;i<e.results.length;i++) t += e.results[i][0].transcript;
+    el.ans.value = (base ? base+" " : "") + t.trim();
+    updateWC();
+  };
+  rec.onerror = function(e){
+    if(e.error==="not-allowed" || e.error==="service-not-allowed"){
+      want = false;
+      setStatus("The microphone is blocked. Speak out loud anyway, then type your answer. Micro đang bị chặn, hãy nói to rồi gõ lại câu trả lời.", true);
+    } else if(e.error==="audio-capture"){
+      want = false;
+      setStatus("No microphone found. Speak out loud, then type your answer.", true);
+    }
+  };
+  rec.onend = function(){
+    if(want && running){ base = el.ans.value.trim(); try{ makeRec(); }catch(_){} }
+  };
+  rec.start();
+}
+function startRec(){
+  if(!SR){
+    setStatus("Voice typing does not work in this browser (use Chrome or Edge). Speak out loud, then type your answer. Hãy nói to rồi gõ lại.");
+    return;
+  }
+  base = el.ans.value.trim();
+  want = true;
+  setStatus("Listening. Speak now.");
+  try{ makeRec(); }catch(_){ want = false; }
+}
+function stopRec(){
+  want = false;
+  try{ if(rec) rec.stop(); }catch(_){}
+}
+
+/* ---------- audio recording (saved as a file, separate from the text) ---------- */
+function pickMime(){
+  var cands = ["audio/webm;codecs=opus","audio/webm","audio/mp4","audio/ogg;codecs=opus"];
+  for(var i=0;i<cands.length;i++){
+    if(window.MediaRecorder && MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(cands[i])) return cands[i];
+  }
+  return "";
+}
+function startAudioRec(){
+  if(!navigator.mediaDevices || !window.MediaRecorder){
+    el.micStatus.textContent = "This browser can't save a sound file, but voice typing above may still work.";
+    el.micStatus.classList.add("warn");
+    return;
+  }
+  navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
+    mediaStream = stream;
+    audioChunks = [];
+    lastAudioMime = pickMime();
+    try{
+      mediaRecorder = lastAudioMime ? new MediaRecorder(stream,{mimeType:lastAudioMime}) : new MediaRecorder(stream);
+    }catch(_){ mediaRecorder = new MediaRecorder(stream); lastAudioMime = ""; }
+    mediaRecorder.ondataavailable = function(e){ if(e.data && e.data.size) audioChunks.push(e.data); };
+    mediaRecorder.onstop = function(){
+      if(audioChunks.length){
+        lastAudioBlob = new Blob(audioChunks, {type: lastAudioMime || "audio/webm"});
+        offerDownload(lastAudioBlob);
+      }
+      try{ mediaStream.getTracks().forEach(function(t){ t.stop(); }); }catch(_){}
+      mediaStream = null;
+    };
+    mediaRecorder.start();
+    el.micStatus.textContent = "Recording your voice as a sound file too.";
+    el.micStatus.classList.remove("warn");
+  }).catch(function(){
+    el.micStatus.textContent = "Microphone for the sound file was blocked. Voice typing above may still work. Micro ghi âm bị chặn, nhưng chuyển giọng nói thành chữ vẫn có thể hoạt động.";
+    el.micStatus.classList.add("warn");
+  });
+}
+function stopAudioRec(discard){
+  if(mediaRecorder && mediaRecorder.state!=="inactive"){
+    if(discard) mediaRecorder.onstop = function(){ try{ mediaStream.getTracks().forEach(function(t){ t.stop(); }); }catch(_){} mediaStream=null; };
+    try{ mediaRecorder.stop(); }catch(_){}
+  }
+  mediaRecorder = null;
+}
+function offerDownload(blob){
+  var url = URL.createObjectURL(blob);
+  var ext = (lastAudioMime||"").indexOf("mp4")>-1 ? "m4a" : "webm";
+  el.dlAudio.href = url;
+  el.dlAudio.download = "part2_"+(current!==null?CARDS[current].c:"answer")+"_"+Date.now()+"."+ext;
+  el.dlAudio.hidden = false;
+}
+
+/* ---------- save + log ---------- */
+function saveEntry(){
+  var a = el.ans.value.trim();
+  if(!a){ setStatus("Speak or type your answer first. Hãy nói hoặc viết câu trả lời trước.", true); el.ans.focus(); return false; }
+  var card = CARDS[current];
+  var id = Date.now();
+  log.push({id:id, n:card.n, c:card.c, notes:el.notes.value.trim(), a:a, hasAudio: !!lastAudioBlob});
+  store.set("p2.log", log);
+  if(lastAudioBlob){
+    audioStore[id] = {url: el.dlAudio.href, name: el.dlAudio.download};
+  }
+  renderLog();
+  return true;
+}
+function renderLog(){
+  el.entries.textContent = "";
+  var has = log.length>0;
+  el.empty.hidden = has;
+  el.tools.hidden = !has;
+  log.forEach(function(e){
+    var li = document.createElement("li"); li.className = "entry";
+    var cat = CATS[e.c];
+    li.style.setProperty("--c", cat ? cat.c : "#4172B0");
+    var t = document.createElement("p"); t.className="topic"; t.textContent = cat ? (cat.em+" "+cat.label) : "";
+    var q = document.createElement("p"); q.className="eq"; q.textContent = "Describe "+e.n;
+    var a = document.createElement("p"); a.className="ea"; a.textContent = e.a;
+    var foot = document.createElement("div"); foot.className="foot";
+    var n = words(e.a);
+    var w = document.createElement("span"); w.textContent = n+(n===1?" word":" words");
+    var rm = document.createElement("button"); rm.type="button"; rm.textContent="Remove";
+    rm.addEventListener("click", function(){
+      log = log.filter(function(x){ return x.id!==e.id; });
+      store.set("p2.log", log);
+      renderLog();
+    });
+    foot.appendChild(w); foot.appendChild(rm);
+    if(audioStore[e.id]){
+      var dl = document.createElement("a");
+      dl.href = audioStore[e.id].url; dl.download = audioStore[e.id].name;
+      dl.textContent = "Download recording";
+      foot.appendChild(dl);
+    } else if(e.hasAudio){
+      var gone = document.createElement("span"); gone.textContent = "Recording was lost on reload";
+      foot.appendChild(gone);
+    }
+    li.appendChild(t); li.appendChild(q);
+    if(e.notes){ var nn = document.createElement("p"); nn.className="en"; nn.textContent = "Notes: "+e.notes; li.appendChild(nn); }
+    li.appendChild(a); li.appendChild(foot);
+    el.entries.appendChild(li);
+  });
+}
+function copyText(text){
+  return new Promise(function(resolve){
+    function fallback(){
+      try{
+        var ta = document.createElement("textarea");
+        ta.value = text; ta.setAttribute("readonly","");
+        ta.style.cssText = "position:fixed;top:0;left:0;opacity:0";
+        document.body.appendChild(ta); ta.select();
+        var ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        resolve(ok);
+      }catch(_){ resolve(false); }
+    }
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){ resolve(true); }, fallback);
+      } else fallback();
+    }catch(_){ fallback(); }
+  });
+}
+function flash(btn, msg){
+  var old = btn.dataset.label || btn.textContent;
+  btn.dataset.label = old;
+  btn.textContent = msg;
+  setTimeout(function(){ btn.textContent = old; }, 1600);
+}
+
+/* ---------- wiring ---------- */
+el.draw.addEventListener("click", draw);
+el.close.addEventListener("click", closeCard);
+el.dlg.addEventListener("close", cleanup);
+el.dlg.addEventListener("click", function(e){ if(e.target===el.dlg) closeCard(); });
+el.skip.addEventListener("click", function(){ closeCard(); draw(); });
+el.saveClose.addEventListener("click", function(){
+  if(saveEntry()){ closeCard(); note("Saved. "+log.length+(log.length===1?" answer":" answers")+" so far."); }
+});
+el.saveNext.addEventListener("click", function(){
+  if(saveEntry()){ cleanup(); draw(); }
+});
+el.go.addEventListener("click", function(){
+  if(running){ stopTimer(true); return; }
+  if(stage==="prep"){ enterSpeak(); startTimer(); }
+  else { startTimer(); }
+});
+el.ans.addEventListener("input", updateWC);
+el.ans.addEventListener("keydown", function(e){
+  if((e.ctrlKey||e.metaKey) && e.key==="Enter"){ e.preventDefault(); el.saveNext.click(); }
+});
+
+if(!("speechSynthesis" in window)) el.hear.hidden = true;
+el.hear.addEventListener("click", function(){
+  try{
+    window.speechSynthesis.cancel();
+    var card = CARDS[current];
+    var text = "Describe "+card.n+". "+card.b.join(". ");
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = "en-GB"; u.rate = 0.92;
+    window.speechSynthesis.speak(u);
+  }catch(_){}
+});
+
+el.name.value = studentName;
+el.name.addEventListener("input", function(){ studentName = el.name.value; store.set("p2.name", studentName); });
+
+el.copyAll.addEventListener("click", function(){
+  var lines = ["IELTS Speaking Part 2 answers"];
+  if(studentName.trim()) lines.push("Student: "+studentName.trim());
+  lines.push("Date: "+new Date().toLocaleDateString(), "");
+  log.forEach(function(e,i){
+    lines.push((i+1)+". Describe "+e.n);
+    if(e.notes) lines.push("Notes: "+e.notes);
+    lines.push("Answer: "+e.a, "");
+  });
+  copyText(lines.join("\n")).then(function(ok){
+    flash(el.copyAll, ok ? "Copied" : "Copy failed, select the text instead");
+  });
+});
+var armed = false, armTimer = null;
+el.clearAll.addEventListener("click", function(){
+  if(!armed){
+    armed = true;
+    el.clearAll.textContent = "Click again to clear all";
+    armTimer = setTimeout(function(){ armed=false; el.clearAll.textContent="Clear all"; }, 3000);
+    return;
+  }
+  clearTimeout(armTimer); armed = false;
+  el.clearAll.textContent = "Clear all";
+  log = []; store.set("p2.log", log); renderLog();
+});
+
+renderChips(); renderCount(); renderLog();
+})();
+</script>
+</body>
+</html>
