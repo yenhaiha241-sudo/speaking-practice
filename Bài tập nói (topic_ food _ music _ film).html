@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bài tập nói (topic: food / music / film)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF0F7; --surface:#FFFFFF; --ink:#1B1F3B; --muted:#5B6080; --line:#D5D9EA;
+  --primary:#2B4BF2; --on-primary:#FFFFFF; --sun:#FFB627; --on-sun:#2A1D00; --rec:#D8345F; --ok:#1E9B62;
+  --card-s:85%; --card-l:93%; --edge-l:48%;
+  --display:"Baloo 2","Be Vietnam Pro",system-ui,sans-serif;
+  --body:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#12152B; --surface:#1C2040; --ink:#EEF0FA; --muted:#A3A8C7; --line:#343A66;
+    --primary:#8799FF; --on-primary:#0E1130; --sun:#FFC24D; --rec:#FF7093; --ok:#4FD39A;
+    --card-s:42%; --card-l:20%; --edge-l:62%;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12152B; --surface:#1C2040; --ink:#EEF0FA; --muted:#A3A8C7; --line:#343A66;
+  --primary:#8799FF; --on-primary:#0E1130; --sun:#FFC24D; --rec:#FF7093; --ok:#4FD39A;
+  --card-s:42%; --card-l:20%; --edge-l:62%;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1rem;line-height:1.5}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.wrap{max-width:54rem;margin:0 auto;padding:1rem 1rem 4rem}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,5vw,2.2rem);line-height:1.15;margin:0 0 .25rem}
+h2{font-family:var(--display);font-weight:800;font-size:1.7rem;line-height:1.15;margin:0}
+h3{font-family:var(--display);font-weight:700;font-size:1.2rem;margin:1.75rem 0 .15rem}
+.muted{color:var(--muted);margin:0}
+.panel{background:var(--surface);border-radius:1.25rem;padding:1.1rem;margin-top:1rem}
+.who{display:grid;grid-template-columns:2fr 1fr;gap:.6rem;margin-top:.75rem}
+.who label{font-size:.9rem;color:var(--muted)}
+.who input{display:block;width:100%;border:1.5px solid var(--line);border-radius:.6rem;background:var(--bg);padding:.45rem .7rem;margin-top:.15rem}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:.9rem}
+.btn{border:2px solid var(--ink);background:var(--surface);border-radius:999px;padding:.4rem 1rem;font-weight:600}
+.btn.main{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.btn.ghost{border-color:var(--line)}
+.check{display:flex;gap:.4rem;align-items:center;font-size:.95rem}
+.warn{background:var(--sun);color:var(--on-sun);border-radius:.8rem;padding:.6rem .9rem;margin-top:.9rem;font-weight:500}
+
+.nav{display:flex;gap:.4rem;overflow-x:auto;padding:.25rem 0 .4rem;margin-top:1rem;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:2}
+.nav button{flex:none;border:2px solid var(--line);background:var(--surface);border-radius:.9rem;padding:.35rem .8rem;font-weight:600;text-align:left;line-height:1.2}
+.nav button small{display:block;font-weight:400;color:var(--muted)}
+.nav button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.nav button[aria-selected="true"] small{color:inherit;opacity:.8}
+
+.unit-head{border-left:.6rem solid hsl(var(--h) 75% var(--edge-l));padding-left:.8rem;display:flex;justify-content:space-between;gap:.75rem;align-items:center;flex-wrap:wrap}
+.scroll{overflow-x:auto;margin-top:.9rem}
+table{border-collapse:collapse;width:100%;min-width:30rem}
+th,td{text-align:left;padding:.4rem .5rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{border-bottom:2px solid hsl(var(--h) 75% var(--edge-l))}
+.words{list-style:none;margin:.9rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));gap:.3rem 1.25rem}
+.words b{font-weight:600}.words i{font-style:normal;color:var(--muted)}
+
+.item{border:1.5px solid var(--line);border-radius:1rem;padding:.8rem .9rem;margin-top:.7rem}
+.item.done{border-color:var(--ok)}
+.item.live{border-color:var(--rec);box-shadow:0 0 0 3px color-mix(in srgb,var(--rec) 25%,transparent)}
+.prompt{margin:0;font-size:1.1rem;font-weight:500}
+.prompt .n{font-family:var(--display);font-weight:800;margin-right:.4rem}
+.prompt small{display:block;font-weight:400;color:var(--muted);font-size:.95rem}
+.ctl{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-top:.6rem}
+.rec{border:0;border-radius:999px;background:var(--primary);color:var(--on-primary);font-weight:600;padding:.45rem 1.1rem}
+.live .rec{background:var(--rec);color:#fff}
+.time{font-family:var(--display);font-weight:700;min-width:3rem}
+audio{height:2.2rem;max-width:100%}
+.dl{font-size:.9rem;color:var(--primary)}
+.cp{border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:.25rem .8rem;font-size:.9rem;font-weight:600}
+.saved{color:var(--ok);font-size:.9rem;font-weight:600}
+.txt{margin-top:.6rem;background:hsl(var(--h) var(--card-s) var(--card-l));border-radius:.7rem;padding:.55rem .75rem;min-height:2.6rem;font-size:1.1rem}
+.txt.empty{color:var(--muted);font-size:1rem}
+.txt i{color:var(--muted)}
+textarea.txt{display:block;width:100%;border:0;resize:vertical;color:var(--ink)}
+.note{color:var(--rec);margin:.5rem 0 0;font-size:.95rem}
+
+dialog{border:0;border-radius:1.25rem;background:var(--surface);color:var(--ink);padding:1.1rem;width:min(40rem,94vw)}
+dialog::backdrop{background:rgba(10,12,30,.55)}
+dialog textarea{width:100%;height:50vh;border:1.5px solid var(--line);border-radius:.7rem;background:var(--bg);padding:.6rem;margin-top:.6rem;font-size:.95rem}
+footer{margin-top:2rem;color:var(--muted);font-size:.9rem;display:flex;justify-content:space-between}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Bài tập nói (topic: food / music / film)</h1>
+  <p class="muted">Bấm "Bắt đầu nói", trả lời bằng tiếng Anh, rồi bấm "Dừng". Bài làm tự lưu trên máy này.</p>
+
+  <div class="panel">
+    <div class="who">
+      <label>Họ và tên<input id="name" autocomplete="name"></label>
+      <label>Lớp<input id="cls"></label>
+    </div>
+    <div class="row">
+      <button class="btn main" id="copyAll">Copy tất cả câu trả lời</button>
+      <button class="btn" id="saveTxt">Lưu câu trả lời thành file</button>
+      <button class="btn ghost" id="wipe">Xóa bài làm</button>
+      <label class="check"><input type="checkbox" id="saveAudio" checked> Lưu ghi âm</label>
+    </div>
+    <div class="warn" id="warn" hidden></div>
+  </div>
+
+  <nav class="nav" id="nav" role="tablist" aria-label="Chọn bài"></nav>
+  <main class="panel" id="unit"></main>
+  <footer><span><b>Ms. Yen</b></span><span>@HaHaiYen</span></footer>
+</div>
+
+<dialog id="dlg" aria-label="Câu trả lời">
+  <h2 id="dlgTitle">Câu trả lời</h2>
+  <p class="muted" id="dlgMsg"></p>
+  <textarea id="dlgText" readonly></textarea>
+  <div class="row"><button class="btn main" id="dlgCopy">Copy lại</button><button class="btn" id="dlgClose">Đóng</button></div>
+</dialog>
+
+<script>
+/* ---------- nội dung bài tập ---------- */
+const Q2='Hỏi và trả lời theo cặp, dùng mẫu câu ở trên.';
+function grammar(id,title,h,rows,ins,cues,qs,talk,starters){
+  return {id,title,h,rows,groups:[
+    {label:'Bài 1',instr:ins,items:cues},
+    {label:'Bài 2',instr:Q2,items:qs},
+    {label:'Bài 3',instr:'Nói 30 giây.',items:[talk+`<small>Mở đầu bằng: ${starters}</small>`]}]};
+}
+function vocab(id,title,h,words,make,qs,talk,bullets){
+  return {id,title,h,words,groups:[
+    {label:'Bài 1',instr:'Đặt câu với từ cho sẵn, dùng đúng mẫu câu đã học ghi bên dưới.',items:make.map(m=>`<b>${m[0]}</b><small>Mẫu câu: ${m[1]}</small>`)},
+    {label:'Bài 2',instr:'Hỏi và trả lời theo cặp. Cố gắng dùng lại từ in đậm trong câu trả lời.',items:qs},
+    {label:'Bài 3',instr:'Nói 1 phút. Dùng ít nhất 3 từ trong bảng và 2 mẫu câu đã học.',items:[talk+`<small>You should say: ${bullets.join('; ')}.</small>`]}]};
+}
+const UNITS=[
+ grammar('g1','1. So sánh',262,
+  [['adj-er + than','(tính từ ngắn) hơn','Pho is <b>cheaper than</b> pizza.'],
+   ['more + adj + than','(tính từ dài) hơn','This film is <b>more interesting than</b> the book.'],
+   ['more + noun + than','nhiều ... hơn','I eat <b>more vegetables than</b> my brother.'],
+   ['(not) as + adj + as','(không) bằng',"This song isn't <b>as catchy as</b> her last one."],
+   ['the more ..., the more / -er ...','càng ... càng ...','<b>The more</b> you practice, <b>the easier</b> it gets.']],
+  'Nhìn gợi ý, nói thành một câu so sánh.',
+  ['pho / pizza / cheap','this film / the book / interesting','my phone / your phone / not as new','street food / restaurant food / tasty','I / my brother / eat / more vegetables','the more / I hear this song / the more / I like it'],
+  ['Which is better, eating at home or eating out? Why?','Is your city more crowded than it was five years ago?','Who is taller, you or your best friend?','Is English as difficult as maths for you?'],
+  'Compare two dishes, two songs or two films you know.',"I think ... is ...-er than ... / It isn't as ... as ... / The more I ..., the more ..."),
+ grammar('g2','2. There is / There are',212,
+  [['There is + a/an + danh từ số ít','có một ...','<b>There is</b> a cinema near my house.'],
+   ['There is + danh từ không đếm được','có ...',"<b>There's</b> a lot of traffic today."],
+   ['There are + danh từ số nhiều','có nhiều ...','<b>There are</b> a lot of coffee shops here.'],
+   ["There isn't any / There aren't any",'không có ...',"<b>There isn't any</b> milk in the fridge."],
+   ['Is there ...? / Are there ...?','có ... không?','<b>Are there</b> any good films on tonight?'],
+   ['There used to be','từng có (giờ không còn)','<b>There used to be</b> a market here.']],
+  'Nhìn gợi ý, nói thành một câu với There is / There are.',
+  ['a cinema / near my house','a lot of coffee shops / on my street','no milk / in the fridge','any good films / on tonight? (đặt câu hỏi)','a market here / before, not now','a lot of traffic / in the morning'],
+  ['What is there near your house?','Are there any good places to eat near your school?','Is there a park in your neighbourhood?','What was there in your area ten years ago?'],
+  'Describe your room or your neighbourhood.',"There is ... / There are a lot of ... / There isn't any ... / There used to be ..."),
+ grammar('g3','3. Câu ước',190,
+  [['I wish + S + V quá khứ','ước điều trái với hiện tại','<b>I wish I had</b> more free time.'],
+   ['I wish I could + V','ước mình có thể','<b>I wish I could</b> play the guitar.'],
+   ['If only + S + V quá khứ','giá mà','<b>If only</b> it <b>were</b> cheaper.'],
+   ["I'd love to + V",'rất muốn',"<b>I'd love to</b> go to a live concert."]],
+  'Đọc tình huống, nói ngay một câu ước.',
+  ["You don't have much free time.","You can't play the guitar.",'This restaurant is too expensive. (If only)','You live far from school.',"You have never been to a live concert. (I'd love to)","It's raining and you want to go out."],
+  ['What do you wish you could do?','What do you wish you had?','Where would you love to travel?','What do you wish you could change about your city?'],
+  'Talk about three wishes you have.',"I wish I had ... / I wish I could ... / If only ... / I'd love to ..."),
+ grammar('g4','4. Câu mục đích',228,
+  [['to + V','để','I went to the market <b>to buy</b> some fruit.'],
+   ['in order to + V','để (trang trọng hơn)','I watch films <b>in order to improve</b> my listening.'],
+   ['so (that) + S + can / could','để (ai đó) có thể',"I'm saving money <b>so that I can</b> travel."],
+   ['for + noun / V-ing','dùng để','This app is <b>for learning</b> English.']],
+  'Nối hai ý thành một câu nói, dùng từ trong ngoặc.',
+  ['I went to the market. I wanted to buy fruit. (to)',"I'm saving money. I want to buy a new phone. (so that)",'She listens to English songs. She wants to improve her pronunciation. (in order to)','I turned on the subtitles. I wanted to understand the film. (so that)','He gets up early. He wants to go jogging. (to)','This app. Learning English. (for)'],
+  ['Why are you learning English?','Why do people go to the gym?','What do you use your phone for?','Why do some people watch films with subtitles?'],
+  'Talk about something you are doing now for a future goal.',"I'm ...ing to ... / I do it in order to ... / ... so that I can ..."),
+ grammar('g5','5. Câu thói quen',150,
+  [['usually / often / hardly ever + V','thường / hay / hiếm khi','I <b>usually</b> have breakfast at home.'],
+   ['I tend to + V','có xu hướng, hay','I <b>tend to</b> eat out at weekends.'],
+   ['I used to + V','từng (giờ không còn)','I <b>used to</b> hate vegetables.'],
+   ["I'm used to + V-ing",'đã quen với việc',"I<b>'m used to getting</b> up early."],
+   ['every day / once a week / twice a month','tần suất','I go to the cinema <b>once a month</b>.']],
+  'Nhìn gợi ý, nói thành một câu về thói quen.',
+  ['I / usually / have breakfast / at home','I / tend to / eat out / at weekends','I / used to / hate vegetables','I / be used to / get up early','she / hardly ever / watch horror films','I / go to the cinema / once a month'],
+  ['What do you usually do in the evening?',"What did you use to do as a child that you don't do now?",'How often do you eat out?','Are you used to getting up early?'],
+  'Talk about your daily routine now and when you were a child.',"I usually ... / I tend to ... / I used to ..., but now ... / I'm used to ..."),
+ vocab('v1','6. Từ vựng: Food',20,
+  [['mouth-watering','ngon chảy nước miếng'],['home-cooked meal','bữa cơm nhà'],['street food','đồ ăn đường phố'],['eat out','đi ăn ngoài'],['grab a bite','ăn nhanh gì đó'],['have a sweet tooth','hảo ngọt'],['picky eater','người kén ăn'],['greasy','nhiều dầu mỡ'],['spicy','cay'],['leftovers','đồ ăn thừa'],['takeaway','đồ mang về'],["I'm starving",'đói lả'],["I'm full",'no rồi'],['signature dish','món đặc trưng'],['cut down on','ăn/uống bớt lại'],['try a new recipe','thử công thức mới']],
+  [['street food','So sánh'],['leftovers','There is / There are'],['try a new recipe','Câu ước'],['cut down on','Câu mục đích'],['eat out','Câu thói quen'],['spicy','So sánh'],['grab a bite','Câu thói quen'],['signature dish','Câu ước']],
+  ['Do you prefer a <b>home-cooked meal</b> or <b>eating out</b>?','Are you a <b>picky eater</b>?','Do you <b>have a sweet tooth</b>?','What <b>street food</b> do you like best?',"What is your family's <b>signature dish</b>?",'Is there any food you want to <b>cut down on</b>?'],
+  'Describe a dish you love.',['what it is','how often you eat it','who makes it or where you eat it','why you love it']),
+ vocab('v2','7. Từ vựng: Music',330,
+  [['catchy','bắt tai'],['lyrics','lời bài hát'],['tune / melody','giai điệu'],['playlist','danh sách nhạc'],['live concert','buổi diễn trực tiếp'],['upbeat','sôi động'],['chill / relaxing','nhẹ nhàng, thư giãn'],['sing along','hát theo'],['stuck in my head','cứ văng vẳng trong đầu'],['put on some music','bật nhạc lên'],['tone-deaf','mù nhạc'],['hit song','bài hit'],['genre','thể loại'],['cheer me up','làm mình vui lên'],['play by ear','chơi nhạc không cần bản nhạc'],['be a huge fan of','rất hâm mộ']],
+  [['catchy','So sánh'],['live concert','There is / There are'],['play by ear','Câu ước'],['put on some music','Câu mục đích'],['sing along','Câu thói quen'],['upbeat','So sánh'],['playlist','Câu thói quen'],['cheer me up','Câu mục đích']],
+  ['What <b>genre</b> of music are you into?','Which song is <b>stuck in your head</b> these days?','Do you <b>sing along</b> when you listen to music?','Have you ever been to a <b>live concert</b>?','What kind of music <b>cheers you up</b>?','Do you prefer <b>upbeat</b> or <b>chill</b> music?'],
+  'Describe a song you like.',['what the song is and who sings it','when you first heard it','what the tune and lyrics are like','why you like it']),
+ vocab('v3','8. Từ vựng: Film',42,
+  [['plot','cốt truyện'],['plot twist','cú lật bất ngờ'],['main character','nhân vật chính'],['cast','dàn diễn viên'],['blockbuster','phim bom tấn'],['subtitles','phụ đề'],['special effects','kỹ xảo'],['gripping','cuốn hút'],['predictable','dễ đoán'],['binge-watch','cày phim'],['spoiler','tiết lộ nội dung'],['sequel','phần tiếp theo'],['come out','ra mắt'],['based on a true story','dựa trên chuyện có thật'],['overrated','được khen quá lời']],
+  [['predictable','So sánh'],['plot twist','There is / There are'],['sequel','Câu ước'],['subtitles','Câu mục đích'],['binge-watch','Câu thói quen'],['gripping','So sánh'],['special effects','There is / There are'],['come out','Câu ước']],
+  ['Which film has the best <b>plot twist</b>?','Do you watch English films with <b>subtitles</b>?','Do you ever <b>binge-watch</b> a series?','Which film do you think is <b>overrated</b>?','Do you like films <b>based on a true story</b>?','Which film are you waiting to <b>come out</b>?'],
+  'Describe a film you enjoyed.',['what the film is and what kind of film it is','who the main character is','what the plot is about (no spoilers!)','why you enjoyed it']),
+ {id:'mix',title:'9. Tổng hợp',h:235,groups:[{label:'Luyện nói tổng hợp',
+   instr:'Trả lời mỗi câu hỏi bằng 2 đến 3 câu, dùng đúng mẫu câu và ít nhất một từ vựng của chủ đề ghi bên dưới.',
+   items:[['Which is better, street food or restaurant food?','So sánh','Food'],['What places to eat are there near your house?','There is / There are','Food'],['What dish do you wish you could cook?','Câu ước','Food'],['What did you use to eat a lot as a child?','Thói quen','Food'],['When do you usually listen to music?','Thói quen','Music'],['Which instrument do you wish you could play?','Câu ước','Music'],['Why do people listen to music while studying?','Mục đích','Music'],['Is watching films at home better than at the cinema?','So sánh','Film'],['Why do you watch films in English?','Mục đích','Film'],['Are there any good films out at the moment?','There is / There are','Film']]
+     .map(x=>`${x[0]}<small>Mẫu câu: ${x[1]}. Chủ đề: ${x[2]}.</small>`)}]}
+];
+UNITS.forEach(u=>u.groups.forEach((g,gi)=>{g.ids=g.items.map((_,i)=>`${u.id}-${gi+1}-${i+1}`);}));
+const unitIds=u=>u.groups.flatMap(g=>g.ids);
+
+/* ---------- lưu trữ ---------- */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const strip=s=>s.replace(/<small>/g,' (').replace(/<\/small>/g,')').replace(/<[^>]+>/g,'');
+const LS='bai-tap-noi-v1';
+let store={name:'',cls:'',ans:{}};
+try{const v=JSON.parse(localStorage.getItem(LS));if(v&&v.ans)store=v;}catch(e){}
+const save=()=>{try{localStorage.setItem(LS,JSON.stringify(store));}catch(e){}};
+
+const mem=new Map();let db=null;const audioIds=new Set();
+function openDb(){return new Promise(res=>{try{const r=indexedDB.open('bai-tap-noi',1);
+  r.onupgradeneeded=()=>r.result.createObjectStore('rec');
+  r.onsuccess=()=>{db=r.result;res();};r.onerror=()=>res();}catch(e){res();}});}
+function tx(mode,fn){return new Promise(res=>{if(!db)return res(null);
+  try{const t=db.transaction('rec',mode),q=fn(t.objectStore('rec'));q.onsuccess=()=>res(q.result);q.onerror=()=>res(null);}catch(e){res(null);}});}
+async function putAudio(id,blob){mem.set(id,blob);audioIds.add(id);await tx('readwrite',s=>s.put(blob,id));}
+async function getAudio(id){return mem.get(id)||await tx('readonly',s=>s.get(id));}
+
+/* ---------- giao diện ---------- */
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+const canRec=!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);
+let cur=UNITS[0],active=null;
+const isDone=id=>!!(store.ans[id]&&store.ans[id].trim())||audioIds.has(id);
+
+function drawNav(){
+  $('#nav').innerHTML=UNITS.map(u=>{const ids=unitIds(u);
+    return `<button role="tab" aria-selected="${u===cur}" data-u="${u.id}">${u.title}<small>${ids.filter(isDone).length}/${ids.length} câu</small></button>`;}).join('');
+}
+function txtHtml(id){
+  const t=store.ans[id]||'';
+  if(!SR)return `<textarea class="txt" rows="2" placeholder="Gõ câu em vừa nói vào đây." aria-label="Câu trả lời">${esc(t)}</textarea>`;
+  return t?`<div class="txt">${esc(t)}</div>`:`<div class="txt empty">Chữ sẽ hiện ở đây khi em nói.</div>`;
+}
+function drawUnit(){
+  const u=cur;let h=`<div class="unit-head" style="--h:${u.h}"><h2>${u.title}</h2><button class="btn ghost" data-copy="1">Copy câu trả lời bài này</button></div>`;
+  if(u.rows)h+=`<div class="scroll"><table style="--h:${u.h}"><thead><tr><th>Mẫu câu</th><th>Nghĩa</th><th>Ví dụ</th></tr></thead><tbody>${u.rows.map(r=>`<tr><td><b>${esc(r[0])}</b></td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}</tbody></table></div>`;
+  if(u.words)h+=`<ul class="words">${u.words.map(w=>`<li><b>${esc(w[0])}</b> <i>${w[1]}</i></li>`).join('')}</ul>`;
+  u.groups.forEach(g=>{
+    h+=`<h3>${g.label}</h3><p class="muted">${g.instr}</p>`;
+    g.items.forEach((p,i)=>{const id=g.ids[i];
+      h+=`<div class="item${isDone(id)?' done':''}" data-id="${id}" style="--h:${u.h}">
+        <p class="prompt"><span class="n">${i+1}.</span>${p}</p>
+        <div class="ctl"><button class="rec">Bắt đầu nói</button><span class="time"></span>
+          <audio controls hidden></audio><a class="dl" hidden>Tải ghi âm</a>
+          <button class="cp">Copy câu này</button><span class="saved">${isDone(id)?'Đã lưu':''}</span></div>
+        ${txtHtml(id)}<p class="note" hidden></p></div>`;});
+  });
+  $('#unit').innerHTML=h;
+  unitIds(u).forEach(async id=>{const b=await getAudio(id);if(b)showAudio(id,b);});
+}
+const itemEl=id=>document.querySelector(`.item[data-id="${id}"]`);
+function showAudio(id,blob){
+  const el=itemEl(id);if(!el)return;
+  const a=el.querySelector('audio'),d=el.querySelector('.dl'),url=URL.createObjectURL(blob);
+  a.src=url;a.hidden=false;
+  const ext=/mp4|aac|m4a/.test(blob.type)?'mp4':/ogg/.test(blob.type)?'ogg':'webm';
+  d.href=url;d.download=`${(store.name||'hoc-sinh').trim().replace(/\s+/g,'-')}_${id}.${ext}`;d.hidden=false;
+}
+function note(el,msg){const n=el.querySelector('.note');n.textContent=msg;n.hidden=!msg;}
+function pick(id){if(active)stop();cur=UNITS.find(u=>u.id===id);drawNav();drawUnit();window.scrollTo({top:0});}
+
+/* ---------- ghi âm và nhận dạng giọng nói ---------- */
+async function start(id){
+  if(active)stop();
+  const el=itemEl(id);note(el,'');
+  const wantAudio=$('#saveAudio').checked&&canRec;
+  if(!wantAudio&&!SR){note(el,'Trình duyệt này không ghi âm và không hiện chữ được. Hãy mở trang bằng Chrome.');return;}
+  const a={id,final:'',chunks:[]};active=a;
+  if(wantAudio){
+    try{a.stream=await navigator.mediaDevices.getUserMedia({audio:true});}
+    catch(e){active=null;note(el,'Không mở được micro. Hãy cho phép trang dùng micro rồi bấm lại.');return;}
+    if(active!==a){a.stream.getTracks().forEach(t=>t.stop());return;}
+    a.mr=new MediaRecorder(a.stream);
+    a.mr.ondataavailable=e=>{if(e.data.size)a.chunks.push(e.data);};
+    a.mr.onstop=async()=>{a.stream.getTracks().forEach(t=>t.stop());
+      const blob=new Blob(a.chunks,{type:a.mr.mimeType||'audio/webm'});
+      if(blob.size){await putAudio(id,blob);showAudio(id,blob);const it=itemEl(id);if(it){it.classList.add('done');it.querySelector('.saved').textContent='Đã lưu';}drawNav();}};
+    a.mr.start();
+  }
+  if(SR){
+    const r=new SR();a.sr=r;r.lang='en-US';r.continuous=true;r.interimResults=true;
+    r.onresult=e=>{let interim='';
+      for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0].transcript;
+        if(e.results[i].isFinal)a.final+=t.trim()+' ';else interim+=t;}
+      const box=el.querySelector('.txt');box.classList.remove('empty');
+      box.innerHTML=esc(a.final)+(interim?`<i>${esc(interim)}</i>`:'');};
+    r.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed')note(el,'Trình duyệt chưa cho phép nhận dạng giọng nói. Hãy cho phép micro.');
+      if(e.error==='network')note(el,'Cần có mạng để hiện chữ khi nói.');};
+    r.onend=()=>{if(active===a){try{r.start();}catch(e){}}};
+    try{r.start();}catch(e){}
+    const box=el.querySelector('.txt');box.classList.add('empty');box.textContent='Đang nghe...';
+  }
+  el.classList.add('live');el.querySelector('.rec').textContent='Dừng';
+  const t0=Date.now(),tm=el.querySelector('.time');
+  const tick=()=>{const s=Math.floor((Date.now()-t0)/1000);tm.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');};
+  tick();a.tick=setInterval(tick,500);
+}
+function stop(){
+  const a=active;if(!a)return;active=null;clearInterval(a.tick);
+  if(a.sr){try{a.sr.stop();}catch(e){}}
+  if(a.mr&&a.mr.state!=='inactive')a.mr.stop();
+  const el=itemEl(a.id);
+  if(el){el.classList.remove('live');el.querySelector('.rec').textContent='Nói lại';}
+  setTimeout(()=>{            // chờ kết quả nhận dạng cuối cùng về
+    if(a.sr){store.ans[a.id]=a.final.trim();save();
+      const it=itemEl(a.id);
+      if(it){it.querySelector('.txt').outerHTML=txtHtml(a.id);
+        it.classList.toggle('done',isDone(a.id));it.querySelector('.saved').textContent=isDone(a.id)?'Đã lưu':'';
+        if(!store.ans[a.id])note(it,'Chưa nghe được chữ nào. Em nói to, rõ hơn và thử lại nhé.');}}
+    drawNav();
+  },900);
+}
+
+/* ---------- tải file: trong artifact dùng downloads, ngoài ra dùng link tải thường ---------- */
+async function saveFile(filename,blob){
+  if(window.claude&&window.claude.use){
+    const d=await window.claude.use('downloads');
+    if(d){try{await d.save({filename,data:blob});}catch(e){}}
+    return;
+  }
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;document.body.appendChild(a);a.click();a.remove();
+}
+
+/* ---------- copy câu trả lời ---------- */
+function unitText(u){
+  let out=`== ${u.title} ==\n`;
+  u.groups.forEach(g=>{out+=`${g.label}\n`;
+    g.items.forEach((p,i)=>{const t=(store.ans[g.ids[i]]||'').trim();
+      out+=`${i+1}. ${strip(p)}\n   → ${t||(audioIds.has(g.ids[i])?'(có ghi âm, chưa có chữ)':'(chưa trả lời)')}\n`;});});
+  return out;
+}
+function allText(units){
+  return `Bài tập nói (topic: food / music / film)\nHọc sinh: ${store.name||'...'} | Lớp: ${store.cls||'...'}\n\n`+units.map(unitText).join('\n');
+}
+async function copy(text){
+  let ok=false;
+  try{await navigator.clipboard.writeText(text);ok=true;}catch(e){}
+  $('#dlgText').value=text;
+  $('#dlgMsg').textContent=ok?'Đã copy. Em dán vào tin nhắn gửi cô nhé.':'Chưa copy tự động được. Em bấm "Copy lại" hoặc tự chọn hết chữ bên dưới để copy.';
+  $('#dlg').showModal();
+}
+$('#dlgCopy').onclick=()=>{const t=$('#dlgText');t.select();
+  try{document.execCommand('copy');$('#dlgMsg').textContent='Đã copy. Em dán vào tin nhắn gửi cô nhé.';}catch(e){}};
+$('#dlgClose').onclick=()=>$('#dlg').close();
+function askCopy(units){const was=!!active;if(was)stop();if(was)setTimeout(()=>copy(allText(units)),1000);else copy(allText(units));}
+$('#copyAll').onclick=()=>askCopy(UNITS);
+$('#saveTxt').onclick=()=>{const was=!!active;if(was)stop();setTimeout(()=>{
+  saveFile(`bai-tap-noi_${(store.name||'hoc-sinh').trim().replace(/\s+/g,'-')}.txt`,new Blob([allText(UNITS)],{type:'text/plain;charset=utf-8'}));},was?1000:0);};
+
+/* ---------- sự kiện ---------- */
+$('#nav').onclick=e=>{const b=e.target.closest('[data-u]');if(b)pick(b.dataset.u);};
+$('#unit').onclick=e=>{
+  if(e.target.closest('[data-copy]')){askCopy([cur]);return;}
+  const dl=e.target.closest('.dl');
+  if(dl){if(window.claude&&window.claude.use){e.preventDefault();
+      getAudio(dl.closest('.item').dataset.id).then(b=>{if(b)saveFile(dl.download,b);});}
+    return;}
+  const c=e.target.closest('.cp');
+  if(c){const it=c.closest('.item'),id=it.dataset.id,t=(store.ans[id]||'').trim();
+    if(!t){note(it,'Câu này chưa có chữ để copy.');return;}
+    const text=strip(it.querySelector('.prompt').innerHTML).replace(/\s+/g,' ').trim()+'\n→ '+t;
+    navigator.clipboard.writeText(text).then(()=>{c.textContent='Đã copy';setTimeout(()=>c.textContent='Copy câu này',1500);},()=>copy(text));
+    return;}
+  const b=e.target.closest('.rec');if(!b)return;
+  const id=b.closest('.item').dataset.id;
+  if(active&&active.id===id)stop();else start(id);
+};
+$('#unit').oninput=e=>{if(e.target.matches('textarea.txt')){const it=e.target.closest('.item');
+  store.ans[it.dataset.id]=e.target.value;save();it.classList.toggle('done',isDone(it.dataset.id));
+  it.querySelector('.saved').textContent=isDone(it.dataset.id)?'Đã lưu':'';drawNav();}};
+$('#name').value=store.name;$('#cls').value=store.cls;
+$('#name').oninput=e=>{store.name=e.target.value;save();};
+$('#cls').oninput=e=>{store.cls=e.target.value;save();};
+$('#wipe').onclick=async()=>{
+  if(!confirm('Xóa toàn bộ câu trả lời và ghi âm trên máy này?'))return;
+  if(active)stop();store.ans={};save();mem.clear();audioIds.clear();await tx('readwrite',s=>s.clear());
+  setTimeout(()=>{drawNav();drawUnit();},1000);
+};
+
+const w=[];
+if(!SR)w.push('Trình duyệt này không hiện chữ khi nói được. Em mở trang bằng Chrome hoặc Edge, hoặc gõ câu trả lời sau khi nói.');
+if(!canRec)w.push('Trình duyệt này không ghi âm được.');
+if(w.length){$('#warn').textContent=w.join(' ');$('#warn').hidden=false;}
+
+(async()=>{await openDb();const keys=await tx('readonly',s=>s.getAllKeys());(keys||[]).forEach(k=>audioIds.add(k));drawNav();drawUnit();})();
+</script>
+</body>
+</html>
